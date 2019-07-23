@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Form, Button, Col } from "react-bootstrap";
+import axios from "axios";
 
-export default class FlightForm extends Component {
+export default class FlightsForm extends Component {
   state = {
     flightFrom: "",
     flightTo: "",
     dateFlightFrom: "",
     dateFlightTo: "",
+    flightsDataInbound: {},
+    flightsDataOutbound: {},
     error: ""
   };
 
@@ -18,12 +21,36 @@ export default class FlightForm extends Component {
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    axios.post("/api/Flights", {
+      flightFrom: this.state.flightFrom,
+      flightTo: this.state.flightTo,
+      dateFlightFrom: this.state.dateFlightFrom,
+      dateFlightTo: this.state.dateFlightTo
+    })
+    .then(response => {
+      this.setState({
+        flightFrom: response.data.flightFromflightFrom,
+        flightTo: response.data.flightTo,
+        dateFlightFrom: response.data.fromDate,
+        dateFlightTo: response.data.toDate,
+        flightsDataInbound: response.data.flightsDataInbound,
+        flightsDataOutbound: response.data.flightsDataOutbound
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  };
+
   render() {
     return (
-      <div style={{align: "right"}}>
+      <div style={{ align: "right" }}>
         <h3>Flights</h3>
 
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Row>
             <Col>
               <Form.Label htmlFor="flightFrom">From</Form.Label>
@@ -81,8 +108,8 @@ export default class FlightForm extends Component {
           </Form.Row>
           <Form.Row>
             <Col>
-            <br />
-            <Button type="submit">Flight Search</Button>
+              <br />
+              <Button type="submit">Flight Search</Button>
             </Col>
           </Form.Row>
         </Form>

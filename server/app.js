@@ -10,7 +10,12 @@ const logger = require("morgan");
 const path = require("path");
 
 mongoose
-  .connect("mongodb://localhost/mytravelappreact", { useNewUrlParser: true })
+  .connect(
+    process.env.MONGODB_URI || "mongodb://localhost/project-management-server",
+    {
+      useNewUrlParser: true
+    }
+  )
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -53,5 +58,8 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
 app.use("/", index);
+
+const flights = require("./routes/Flights");
+app.use("/api/Flights", flights);
 
 module.exports = app;
