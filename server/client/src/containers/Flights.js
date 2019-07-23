@@ -7,10 +7,15 @@ export default class Flights extends Component {
     flights: []
   };
 
+
+
+  
+
+
   render() {
     return (
       <div>
-        <FlightsForm flights={this.state.flights}/>
+        <FlightsForm refreshflightList={this.state.flights}/>
         <FlightsList flights={this.state.flights}/>
       </div>
     )

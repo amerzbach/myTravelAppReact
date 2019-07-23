@@ -47,10 +47,10 @@ export default class FlightsForm extends Component {
 
   render() {
     return (
-      <div style={{ align: "right" }}>
+      <div>
         <h3>Flights</h3>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form method="post" action="api/Flights">
           <Form.Row>
             <Col>
               <Form.Label htmlFor="flightFrom">From</Form.Label>
