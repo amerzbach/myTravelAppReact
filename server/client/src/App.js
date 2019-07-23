@@ -6,11 +6,13 @@ import { Switch,Route } from "react-router-dom";
 import Flights from "./containers/Flights";
 import Hotels from "./containers/Hotels";
 import Bikes from "./containers/Bikes";
+import Hero from "./components/hero/hero";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+
 
       <Switch>
         <Route exact path="/Flights" component={Flights} />
