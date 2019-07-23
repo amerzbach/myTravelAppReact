@@ -1,0 +1,251 @@
+// 20190723164633
+// http://localhost:3000/api/Flights
+
+{
+  "flightFrom": "FRA",
+  "flightTo": "BIO",
+  "fromDate": [
+    "2019-07-29"
+  ],
+  "toDate": [
+    "2019-07-30"
+  ],
+  "flightsDataInbound": [
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T11:25"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "Arrival": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T13:30"
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1142
+        },
+        "Equipment": {
+          "AircraftCode": "32A"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 15,
+          "DatePeriod": {
+            "Effective": "2019-07-29",
+            "Expiration": "2019-08-02"
+          }
+        }
+      }
+    },
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T16:20"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "Arrival": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T18:25"
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1144
+        },
+        "Equipment": {
+          "AircraftCode": "32N"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 1,
+          "DatePeriod": {
+            "Effective": "2019-07-29",
+            "Expiration": "2019-08-05"
+          }
+        }
+      }
+    },
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T20:50"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "Arrival": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-29T22:55"
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1146
+        },
+        "Equipment": {
+          "AircraftCode": "32N"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 123456,
+          "DatePeriod": {
+            "Effective": "2019-07-29",
+            "Expiration": "2019-08-05"
+          }
+        }
+      }
+    }
+  ],
+  "flightsDataOutbound": [
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T06:55"
+          }
+        },
+        "Arrival": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T09:00"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1147
+        },
+        "Equipment": {
+          "AircraftCode": "32N"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 2567,
+          "DatePeriod": {
+            "Effective": "2019-07-28",
+            "Expiration": "2019-08-06"
+          }
+        }
+      }
+    },
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T14:10"
+          }
+        },
+        "Arrival": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T16:15"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1143
+        },
+        "Equipment": {
+          "AircraftCode": "32N"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 12,
+          "DatePeriod": {
+            "Effective": "2019-07-30",
+            "Expiration": "2019-08-05"
+          }
+        }
+      }
+    },
+    {
+      "TotalJourney": {
+        "Duration": "PT2H5M"
+      },
+      "Flight": {
+        "Departure": {
+          "AirportCode": "BIO",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T19:10"
+          }
+        },
+        "Arrival": {
+          "AirportCode": "FRA",
+          "ScheduledTimeLocal": {
+            "DateTime": "2019-07-30T21:15"
+          },
+          "Terminal": {
+            "Name": 1
+          }
+        },
+        "MarketingCarrier": {
+          "AirlineID": "LH",
+          "FlightNumber": 1145
+        },
+        "Equipment": {
+          "AircraftCode": "32A"
+        },
+        "Details": {
+          "Stops": {
+            "StopQuantity": 0
+          },
+          "DaysOfOperation": 267,
+          "DatePeriod": {
+            "Effective": "2019-07-30",
+            "Expiration": "2019-08-04"
+          }
+        }
+      }
+    }
+  ]
+}
