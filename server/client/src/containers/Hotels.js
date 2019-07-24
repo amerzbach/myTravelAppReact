@@ -8,7 +8,7 @@ export default class Hotels extends Component {
          <Hero
           videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4"
           h1="Hotels"
-          h2="Search for Hotels"
+          h2="Whether luxurious, comfortable or just exciting. You choose."
         />
       </div>
     )

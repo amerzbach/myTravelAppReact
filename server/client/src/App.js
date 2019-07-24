@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 import { Switch,Route } from "react-router-dom";
-import Flights from "./containers/Flights";
+import Flights  from "./containers/Flights";
 import Hotels from "./containers/Hotels";
 import Bikes from "./containers/Bikes";
 import Hero from "./components/hero/hero";

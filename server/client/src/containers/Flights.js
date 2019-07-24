@@ -21,9 +21,9 @@ export default class Flights extends Component {
     return (
       <div>
         <Hero
-          videosrc="https://pixabay.com/videos/download/video-1917_small.mp4"
+          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
           h1="Flights"
-          h2="Search for flights"
+          h2="Choose your flights. Fly high."
         />
 
         <FlightsForm refreshflightsList={this.refreshflightsList} />
