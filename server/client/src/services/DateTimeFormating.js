@@ -1,7 +1,7 @@
 const getDuration = duration => {
   // Transforms format of durations strings like P1DT5H35M into 1D 5H 35m
   // Using regular expressions for formating
-  
+
   duration = duration.replace(/P/, "");
   duration = duration.replace(/T/, "");
   duration = duration.replace(/D/, "D ");
@@ -26,6 +26,9 @@ const getDateHour = date => {
   }
   if (month < 10) {
     month = "0" + month;
+  }
+  if (minutes < 10 ) {
+    minutes = "0" + minutes;
   }
 
   return hour + ":" + minutes + " "+ dt + "/" + month + "/" + year;
