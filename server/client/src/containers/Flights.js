@@ -14,7 +14,7 @@ export default class Flights extends Component {
         flightsDataInbound: response.data.flightsDataInbound,
         flightsDataOutbound: response.data.flightsDataOutbound
       }) 
-      console.log(this.state.flights);
+      console.log(this.state.flightsDataInbound);
   };
 
   render() {
@@ -27,7 +27,7 @@ export default class Flights extends Component {
         />
 
         <FlightsForm refreshflightsList={this.refreshflightsList} />
-        <FlightsList flights={this.state.flightsDataInbound,this.state.flightsDataOutbound} />
+        <FlightsList inboundFlights={this.state.flightsDataInbound} outboundFlights={this.state.flightsDataOutbound} />
       </div>
     );
   }
