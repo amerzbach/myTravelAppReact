@@ -31,6 +31,7 @@ export default class FlightsForm extends Component {
       dateFlightTo: this.state.dateFlightTo
     })
     .then(response => {
+      this.props.refreshflightsList(response);
       this.setState({
         flightFrom: response.data.flightFromflightFrom,
         flightTo: response.data.flightTo,
@@ -48,9 +49,8 @@ export default class FlightsForm extends Component {
   render() {
     return (
       <div>
-        <h3>Flights</h3>
 
-        <Form method="post" action="api/Flights">
+        <Form onSubmit={this.handleSubmit}>
           <Form.Row>
             <Col>
               <Form.Label htmlFor="flightFrom">From</Form.Label>
