@@ -11,10 +11,9 @@ export default class Flights extends Component {
 
   refreshflightsList = response => {
       this.setState ({
-        flightsDataInbound: response.data.flightsDataInbound,
-        flightsDataOutbound: response.data.flightsDataOutbound
+        flightsDataInbound: response.flightsDataInbound,
+        flightsDataOutbound: response.flightsDataOutbound
       }) 
-      console.log(this.state.flightsDataInbound);
   };
 
   render() {
@@ -27,7 +26,7 @@ export default class Flights extends Component {
         />
 
         <FlightsForm refreshflightsList={this.refreshflightsList} />
-        <FlightsList inboundFlights={this.state.flightsDataInbound} outboundFlights={this.state.flightsDataOutbound} />
+        <FlightsList inboundFlights={this.state.flightsDataInbound} outboundFlights={this.state.flightsDataOutbound}/>
       </div>
     );
   }

@@ -12,16 +12,15 @@ router.post("/", (req, res) => {
     return splitArray;
   }
 
-  newDateFrom = returnDate(dateFlightFrom);
-  newDateTo = returnDate(dateFlightTo);
+newDateFlightFrom = returnDate(dateFlightFrom);
+newDateFlightTo = returnDate(dateFlightTo);
 
-  console.log(newDateFrom, newDateTo);
 
   resObject = {
     flightFrom: flightFrom,
     flightTo: flightTo,
-    fromDate: newDateFrom,
-    toDate: newDateTo,
+    dateFlightFrom: newDateFlightFrom,
+    dateFlightTo: newDateFlightTo,
     flightsDataInbound: {},
     flightsDataOutbound: {}
   };
@@ -46,8 +45,8 @@ router.post("/", (req, res) => {
       tokenRes = token;
       // console.log("Token ",tokenRes);
 
-      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${newDateFrom}?directFlights=false`;
-      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${newDateTo}?directFlights=false`;
+      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${newDateFlightFrom}?directFlights=false`;
+      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${newDateFlightTo}?directFlights=false`;
 
       console.log(lhUrl1, lhUrl2);
 

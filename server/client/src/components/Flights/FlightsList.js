@@ -1,11 +1,12 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Alert } from "react-bootstrap";
 import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const FlightsList = props => {
   return (
     <div>
       <br />
+
       {props.inboundFlights.length > 0 && (
         <Table striped bordered hover variant="dark">
           <thead>

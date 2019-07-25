@@ -34,4 +34,36 @@ const getDateHour = date => {
   return hour + ":" + minutes + " "+ dt + "/" + month + "/" + year;
 };
 
-export { getDuration, getDateHour };
+
+const getToday = (num) => {
+  // Returs date of today + num 
+  
+  let newDate = new Date();
+  newDate = newDate.setDate(newDate.getDate() + num)
+  console.log(newDate)
+  return newDate;
+
+}
+
+
+const getFormDate = (date) => {
+  // Returs date formated for input type date YYYY-MM-DD
+  
+  let newDate = new Date(date);
+  let year = newDate.getFullYear();
+  let month = newDate.getMonth() + 1;
+  let dt = newDate.getDate();
+
+  if (dt < 10) {
+    dt = "0" + dt;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  return year + "-" + month + "-" + dt;
+}
+
+
+
+export { getDuration, getDateHour, getToday, getFormDate };
