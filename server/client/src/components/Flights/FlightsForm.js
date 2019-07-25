@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import { getFlights } from "../../services/Api";
-import { getToday, getFormDate } from "../../services/DateTimeFormating";
+import { getToday, getFormDate, getDateApi } from "../../services/DateTimeFormating";
 
 export default class FlightsForm extends Component {
   state = {
@@ -15,28 +15,34 @@ export default class FlightsForm extends Component {
   };
 
   handleChange = event => {
-
     const { name, value } = event.target;
-    
+
     this.setState({
       [name]: value
-    })
+    });
+  };
 
-    console.log(this.state.dateFlightFrom);
-    console.log(this.state.dateFlightTo);
-
-    /*
-
-    const d1 = new Date(this.state.dateFlightFrom);
-    const d2 = new Date(this.state.dateFlightTo);
-    console.log(d1 >  d2)
-
-    // This is NOT WORKING - Require Help
-    if (Date(this.state.dateFlightFrom) > Date(this.state.dateFlightTo)) {
-      console.log("paso por aqui");
-      this.setState.dateFlightTo = this.state.dateFlightFrom;
+  handleDateFlightFromChange = event => {
+    let newDate = new Date(event.target.value);
+    let newDateTo = new Date(this.state.dateFlightTo)
+    if (newDate > newDateTo) {
+      this.setState({
+        dateFlightFrom: newDate,
+        dateFlightTo: newDate
+      });
     }
-    */
+    else {    this.setState({
+      dateFlightFrom: newDate
+    });}
+
+  };
+
+  handleDateFlightToChange = event => {
+    let newDate = new Date(event.target.value);
+    console.log(newDate);
+    this.setState({
+      dateFlightTo: newDate
+    });
   };
 
   handleSubmit = event => {
@@ -44,14 +50,14 @@ export default class FlightsForm extends Component {
 
     event.preventDefault();
 
-    getFlights(flightFrom, flightTo, dateFlightFrom, dateFlightTo)
+    getFlights(flightFrom, flightTo, getDateApi(dateFlightFrom), getDateApi(dateFlightTo))
       .then(response => {
         this.props.refreshflightsList(response);
         this.setState({
           flightFrom: response.flightFrom,
           flightTo: response.flightTo,
-          dateFlightFrom: response.fromDate,
-          dateFlightTo: response.toDate,
+          dateFlightFrom: new Date(response.dateFlightFrom),
+          dateFlightTo: new Date (response.dateFlightTo),
           flightsDataInbound: response.flightsDataInbound,
           flightsDataOutbound: response.flightsDataOutbound
         });
@@ -104,7 +110,7 @@ export default class FlightsForm extends Component {
             <Col>
               <Form.Control
                 type="date"
-                onChange={this.handleChange}
+                onChange={this.handleDateFlightFromChange}
                 id="dateFlightFrom"
                 name="dateFlightFrom"
                 value={getFormDate(this.state.dateFlightFrom)}
@@ -119,7 +125,7 @@ export default class FlightsForm extends Component {
             <Col>
               <Form.Control
                 type="date"
-                onChange={this.handleChange}
+                onChange={this.handleDateFlightToChange}
                 id="dateFlightTo"
                 name="dateFlightTo"
                 value={getFormDate(this.state.dateFlightTo)}

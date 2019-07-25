@@ -35,12 +35,30 @@ const getDateHour = date => {
 };
 
 
+const getDateApi = date => {
+  // Transforms format of date hours like this 2019-07-29T06:20 into 2019-07-29 for Api Calls
+  
+  let newDate = new Date(date);
+
+  let year = newDate.getFullYear();
+  let month = newDate.getMonth() + 1;
+  let dt = newDate.getDate();
+
+  if (dt < 10) {
+    dt = "0" + dt;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  return year + "-" + month + "-" + dt;
+};
+
 const getToday = (num) => {
   // Returs date of today + num 
   
   let newDate = new Date();
   newDate = newDate.setDate(newDate.getDate() + num)
-  console.log(newDate)
   return newDate;
 
 }
@@ -65,5 +83,4 @@ const getFormDate = (date) => {
 }
 
 
-
-export { getDuration, getDateHour, getToday, getFormDate };
+export { getDuration, getDateHour, getDateApi, getToday, getFormDate };
