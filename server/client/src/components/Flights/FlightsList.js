@@ -4,16 +4,22 @@ import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const FlightsList = props => {
   return (
-    <div>
+    <div align="center" style={{position: "absolute", zIndex: 1, width: "100%"}}>
       <br />
 
       {props.inboundFlights.length > 0 && (
-        <Table striped bordered hover variant="dark">
+        <Table
+          striped
+          bordered
+          hover
+          variant="dark"
+          style={{ width: "95%" }}
+          id="inboundTable"
+        >
           <thead>
             <tr>
-              <th>Inbound Flights</th>
-              <th colSpan="6" background-color="transparent">
-                {" "}
+              <th colSpan="7" class="bg-primary text-white">
+                Inbound Flights
               </th>
             </tr>
           </thead>
@@ -111,17 +117,22 @@ const FlightsList = props => {
       )}
 
       <br />
-      {props.inboundFlights.length > 0 && (
-        <Table striped bordered hover variant="dark">
+
+      {props.outboundFlights.length > 0 && (
+        <Table
+          striped
+          bordered
+          hover
+          variant="dark"
+          style={{ width: "95%" }}
+          id="outboundTable"
+        >
           <thead>
             <tr>
-              <th>Outbound Flights</th>
-              <th colSpan="6" background-color="transparent">
-                {" "}
+              <th colSpan="7" class="bg-primary text-white">
+                Outbound Flights
               </th>
             </tr>
-          </thead>
-          <thead>
             <tr>
               <th>Duration</th>
               <th>Airline</th>

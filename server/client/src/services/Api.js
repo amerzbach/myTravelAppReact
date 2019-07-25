@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const getFlights = (flightFrom, flightTo, dateFlightFrom, dateFlightTo) =>
-  axios
+const getFlights = (flightFrom, flightTo, dateFlightFrom, dateFlightTo) => 
+  
+axios
     .post("/api/Flights", {
       flightFrom: flightFrom,
       flightTo: flightTo,

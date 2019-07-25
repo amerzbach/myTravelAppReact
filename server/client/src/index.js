@@ -5,10 +5,32 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from "react-router-dom";
+import { usePromiseTracker } from "react-promise-tracker";
+import Loader from 'react-loader-spinner';
+
+const LoadingIndicator = props => {
+  const { promiseInProgress } = usePromiseTracker();
+
+  return promiseInProgress && 
+    <div
+      style={{
+        position: "absolute",
+        zIndex: 2147483647,
+        width: "100%",
+        height: "100",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <Loader type="Plane" color="#ffffff" height="100" width="100" />
+</div>
+};
 
 ReactDOM.render(
   <BrowserRouter>
     <App />
+    <LoadingIndicator/>
   </BrowserRouter>,
   document.getElementById("root")
 );
