@@ -81,4 +81,36 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get('/search/:hotelId', (req, res, next) => {
+    // Enviroment Variables Loading
+    const dotenv = require("dotenv");
+    dotenv.config();
+  
+    //SHA-256 Encryption for APITUDE Authentication
+    let utcDate = Math.floor(new Date().getTime() / 1000);
+    let assemble =
+      process.env.APITUDEHOTELKEY + process.env.APITUDEHOTELSECRET + utcDate;
+    hash = CryptoJS.SHA256(assemble).toString();
+    encryption = hash.toString(CryptoJS.enc.Hex);
+  
+
+  const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/${req.params.hotelId}`;
+    
+    axios
+    .get(urlApiHotels,{
+      headers: {
+        "Api-key": process.env.APITUDEHOTELKEY,
+        "X-Signature" : encryption,
+        "Content-Type": "application/json",
+        "Accept-Encoding": "gzip"
+      }
+    })
+    .then((result) => {
+      console.log(result.data)
+      res.json(result.data);
+    }).catch(err => {
+        console.log(err);
+    }); 
+});
+
 module.exports = router;

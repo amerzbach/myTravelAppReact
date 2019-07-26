@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const getFlights = (flightFrom, flightTo, dateFlightFrom, dateFlightTo) => (
   axios
     .post("/api/Flights", {
@@ -27,5 +28,12 @@ const getHotels = (flightTo, dateFlightFrom, dateFlightTo) => (
   })
 )
 
+const getHotelDetails = (hotelId) => (
+  axios
+  .get(`/api/Hotels/search/${hotelId}`)
+  .then(response => {
+    return response.data;
+  })
+)
 
-export { getFlights,getHotels };
+export { getFlights,getHotels, getHotelDetails };
