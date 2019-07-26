@@ -58,6 +58,16 @@ const getToday = (num) => {
   // Returs date of today + num 
   
   let newDate = new Date();
+  newDate.setHours(0,0)
+  newDate.setDate(newDate.getDate() + num)
+  return newDate;
+
+}
+
+const getDatePlus = (date,num) => {
+  // Returs date + num 
+  
+  let newDate = new Date(date);
   newDate = newDate.setDate(newDate.getDate() + num)
   return newDate;
 
@@ -83,4 +93,4 @@ const getFormDate = (date) => {
 }
 
 
-export { getDuration, getDateHour, getDateApi, getToday, getFormDate };
+export { getDuration, getDateHour, getDateApi, getToday, getFormDate, getDatePlus };

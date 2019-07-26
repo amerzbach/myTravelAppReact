@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import { Form, Button, Col } from "react-bootstrap";
-import { getFlights } from "../../services/Api";
+import { getHotels } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
   getToday,
   getFormDate,
-  getDateApi
+  getDateApi,
+  getDatePlus
 } from "../../services/DateTimeFormating";
 
-export default class FlightsForm extends Component {
+export default class HotelsForm extends Component {
   state = {
-    flightFrom: "",
     flightTo: "",
     dateFlightFrom: getToday(0),
-    dateFlightTo: getToday(0),
-    flightsDataInbound: [],
-    flightsDataOutbound: [],
-    error: "",
+    dateFlightTo: getToday(1),
+    hotelsData: [],
+    error: ""
   };
 
   handleChange = event => {
@@ -30,10 +29,11 @@ export default class FlightsForm extends Component {
   handleDateFlightFromChange = event => {
     let newDateFrom = new Date(event.target.value);
     let newDateTo = new Date(this.state.dateFlightTo);
-    if (newDateFrom > newDateTo) {
+
+    if (newDateFrom >= newDateTo) {
       this.setState({
         dateFlightFrom: newDateFrom,
-        dateFlightTo: newDateFrom
+        dateFlightTo: getDatePlus(newDateFrom,1)
       });
     } else {
       this.setState({
@@ -45,9 +45,9 @@ export default class FlightsForm extends Component {
   handleDateFlightToChange = event => {
     let newDateFrom = new Date(this.state.dateFlightFrom);
     let newDateTo = new Date(event.target.value);
-    if (newDateFrom > newDateTo) {
+    if (newDateFrom >= newDateTo) {
       this.setState({
-        dateFlightFrom: newDateTo,
+        dateFlightFrom: getDatePlus(newDateTo,-1),
         dateFlightTo: newDateTo
       });
     } else {
@@ -60,23 +60,20 @@ export default class FlightsForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { flightFrom, flightTo, dateFlightFrom, dateFlightTo } = this.state;
+    const { flightTo, dateFlightFrom, dateFlightTo } = this.state;
 
     trackPromise(
-      getFlights(
-        flightFrom,
+      getHotels(
         flightTo,
         getDateApi(dateFlightFrom),
         getDateApi(dateFlightTo)
       ).then(response => {
-        this.props.refreshflightsList(response);
+        this.props.refreshHotelsList(response);
         this.setState({
-          flightFrom: response.flightFrom,
           flightTo: response.flightTo,
           dateFlightFrom: new Date(response.dateFlightFrom),
           dateFlightTo: new Date(response.dateFlightTo),
-          flightsDataInbound: response.flightsDataInbound,
-          flightsDataOutbound: response.flightsDataOutbound,
+          hotelsData: response.hotelsData
         });
       })
     ).catch(err => {
@@ -87,26 +84,10 @@ export default class FlightsForm extends Component {
   render() {
     return (
       <div align="center">
-        <br />
-
         <Form onSubmit={this.handleSubmit} style={{ width: "95%" }}>
           <Form.Row>
             <Col>
-              <Form.Label htmlFor="flightFrom">From</Form.Label>
-
-              <Form.Control
-                type="text"
-                onChange={this.handleChange}
-                id="flightFrom"
-                name="flightFrom"
-                value={this.state.flightFrom || ""}
-                placeholder="Origin airport IATA Code"
-                required
-              />
-            </Col>
-
-            <Col>
-              <Form.Label htmlFor="flightTo">To</Form.Label>
+              <Form.Label htmlFor="flightTo">Hotel Location</Form.Label>
 
               <Form.Control
                 type="text"
@@ -142,14 +123,14 @@ export default class FlightsForm extends Component {
                 id="dateFlightTo"
                 name="dateFlightTo"
                 value={getFormDate(this.state.dateFlightTo)}
-                min={getFormDate(getToday(0))}
+                min={getFormDate(getToday(1))}
               />
             </Col>
           </Form.Row>
           <Form.Row>
             <Col>
               <br />
-              <Button type="submit">Flight Search</Button>
+              <Button type="submit">Hotel Search</Button>
             </Col>
           </Form.Row>
         </Form>
