@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardDeck, Button } from "react-bootstrap";
+import { Container, Col, Row, Card, CardDeck, Button } from "react-bootstrap";
 
 const HotelsList = props => {
   return (
@@ -10,24 +10,21 @@ const HotelsList = props => {
       <br />
 
       {props.hotelsData.length > 0 && (
-        
-          <CardDeck align="center">
+        <div>
           {props.hotelsData.map(Hotel => {
             return (
-              <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={Hotel.images[0].path} />
-                <Card.Body>
-                  <Card.Title>{Hotel.name.content}</Card.Title>
-                  <Card.Text>
-                  http://photos.hotelbeds.com/giata/bigger/{Hotel.images[0].path}
-                  </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-              </Card>
+              <div>
+                <img
+                  src={`http://photos.hotelbeds.com/giata/bigger/${
+                    Hotel.images[0].path
+                  }`}
+                  alt="Hotel" align="left"
+                />
+                <h3>{Hotel.name.content}</h3>
+              </div>
             );
           })}
-          </CardDeck>
-        
+        </div>
       )}
     </div>
   );
