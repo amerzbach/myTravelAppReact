@@ -50,7 +50,12 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
+
+// Uncoment for the DEV
+//app.use(express.static(path.join(__dirname, "public")));
+// Uncoment for the production Build
+app.use(express.static(path.join(__dirname, "/client/build")));
+
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
@@ -64,5 +69,10 @@ app.use("/api/Flights", flights);
 
 const hotels = require("./routes/Hotels");
 app.use("/api/Hotels", hotels);
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;
