@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getHotelDetails } from "../services/Api";
+import Carousel from "react-bootstrap/Carousel";
 
 export default class HotelDetails extends Component {
   state = {
@@ -14,7 +15,6 @@ export default class HotelDetails extends Component {
         this.setState({
           hotelDetails: response
         });
-        console.log("AAAAAAAAAAAAAAA",this.state.hotelDetails);
       })
       .catch(err => {
         console.log(err);
@@ -26,17 +26,38 @@ export default class HotelDetails extends Component {
   }
 
   render() {
-    console.log(this.state.hotelDetails)
-    console.log(Object.entries(this.state.hotelDetails).length > 0)
     return (
-      <div>
-      {Object.entries(this.state.hotelDetails).length > 0 && (
-        <div>
-          <h1>Bla bla</h1>
-      <h1>{this.state.hotelDetails.hotel.name.content}</h1>
-      <p>{this.state.hotelDetails.hotel.description.content}</p>
-        </div>
-      )}
+      <div align="center" style = {{width: "95%"}}>
+        {Object.entries(this.state.hotelDetails).length > 0 && (
+          <div>
+            <h1>
+              {this.state.hotelDetails.hotel.name.content}
+              <img
+                src={`http://cdn4.hotelopia.com/freya/img/stars/${
+                  this.state.hotelDetails.hotel.category.code
+                }.gif`}
+                alt="Hotel Stars"
+              />
+            </h1>
+            <p>{this.state.hotelDetails.hotel.description.content}</p>
+
+            <Carousel>
+              {this.state.hotelDetails.hotel.images.map(image => {
+                return (
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src={`http://photos.hotelbeds.com/giata/bigger/${
+                        image.path
+                      }`}
+                      alt=" "
+                    />
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+          </div>
+        )}
       </div>
     );
   }
