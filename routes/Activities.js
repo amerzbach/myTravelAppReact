@@ -44,8 +44,6 @@ router.get("/", (req, res, next) => {
     }
   };
 
-
-
   axios
     .post(urlApiActivity, params,{
       headers: {
@@ -65,8 +63,14 @@ router.get("/", (req, res, next) => {
     });
 });
 
-/*
-router.get("/", (req, res, next) => {
+
+
+
+
+/************************ */
+
+
+router.post("/", (req, res, next) => {
   // Enviroment Variables Loading
   const dotenv = require("dotenv");
   dotenv.config();
@@ -80,15 +84,29 @@ router.get("/", (req, res, next) => {
   hash = CryptoJS.SHA256(assemble).toString();
   encryption = hash.toString(CryptoJS.enc.Hex);
 
-  const urlApiActivity =
-    "https://api.hotelbeds.com/activity-content-api/3.0/activities/en/E-E10-000200515/8";
+  const urlApiActivity = "https://api.test.hotelbeds.com/activity-api/3.0/activities/";
+
+  const params = {
+    filters: [
+      {
+        searchFilterItems: [{ type: "destination", value: `${req.body.flightTo}` }]
+      }
+    ],
+    from: `${req.body.dateFlightFrom}`,
+    to: `${req.body.dateFlightTo}`,
+    language: "en",
+    pagination: {
+      itemsPerPage: 6,
+      page: 1
+    }
+  };
 
   resObject = {
     activitiesList: {}
   };
 
   axios
-    .get(urlApiActivity,{
+    .post(urlApiActivity,params,{
       headers: {
         "Api-key": process.env.APITUDEACTIVITYKEY,
         "X-Signature": encryption,
@@ -97,7 +115,8 @@ router.get("/", (req, res, next) => {
       }
     })
     .then(result => {
-      resObject.activitiesList = result.data.activities;
+      console.log(result);
+      resObject.activitiesList = result.data;
       res.json(resObject);
     })
     .catch(err => {
@@ -105,6 +124,6 @@ router.get("/", (req, res, next) => {
     });
 });
 
-*/
+
 
 module.exports = router;

@@ -36,4 +36,17 @@ const getHotelDetails = (hotelId) => (
   })
 )
 
-export { getFlights,getHotels, getHotelDetails };
+const getActivities = (flightTo, dateFlightFrom, dateFlightTo) => (
+  axios
+  .post("/api/Activities", {
+    flightTo: flightTo,
+    dateFlightFrom: dateFlightFrom,
+    dateFlightTo: dateFlightTo
+  })
+  .then(response => {
+    console.log(response.data);
+    return response.data;
+  })
+)
+
+export { getFlights,getHotels, getHotelDetails, getActivities };
