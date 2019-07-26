@@ -70,6 +70,9 @@ app.use("/api/Flights", flights);
 const hotels = require("./routes/Hotels");
 app.use("/api/Hotels", hotels);
 
+const activities = require("./routes/Activities");
+app.use("/api/Activities", activities);
+
 app.use((req, res) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/client/build/index.html");
