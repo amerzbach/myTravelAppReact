@@ -53,13 +53,14 @@ app.set("view engine", "hbs");
 
 // Uncoment for the DEV
 app.use(express.static(path.join(__dirname, "public")));
+
 // Uncoment for the production Build
 // app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = "myTravelApp";
+app.locals.title = "ExperienceHub";
 
 const index = require("./routes/index");
 app.use("/", index);
@@ -72,6 +73,9 @@ app.use("/api/Hotels", hotels);
 
 const activities = require("./routes/Activities");
 app.use("/api/Activities", activities);
+
+const all = require("./routes/All");
+app.use("/api/All", all);
 
 app.use((req, res) => {
   // If no routes match, send them the React HTML.

@@ -22,12 +22,11 @@ const ActivitiesList = props => {
                   <h1>{activity.content.name}</h1>
                 </Link>
                 <img
-                  src={`${activity.content.media.images[0].urls[2].resource}`}
+                  src={`${activity.content.media.images[0].urls[0].resource}`}
                   alt="Activity"
                   align="right"
                 />
                 
-                <div dangerouslySetInnerHTML={{ __html: activity.content.description }} align="left"/>
               </div>
             );
           })}

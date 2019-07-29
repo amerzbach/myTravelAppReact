@@ -1,22 +1,23 @@
 import React, { Component } from "react";
-import { Form, Button, Col } from "react-bootstrap";
-import { getFlights } from "../../services/Api";
+import { Alert, Form, Button, Col } from "react-bootstrap";
+import { getAll } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
   getToday,
   getFormDate,
-  getDateApi
+  getDateApi,
+  getDatePlus
 } from "../../services/DateTimeFormating";
 
-export default class FlightsForm extends Component {
+export default class HomeForm extends Component {
   state = {
     flightFrom: "",
     flightTo: "",
-    dateFlightFrom: getToday(0),
-    dateFlightTo: getToday(0),
+    dateFlightFrom: getToday(1),
+    dateFlightTo: getToday(2),
     flightsDataInbound: [],
     flightsDataOutbound: [],
-    error: "",
+    nonStopOnly: true
   };
 
   handleChange = event => {
@@ -25,6 +26,14 @@ export default class FlightsForm extends Component {
     this.setState({
       [name]: value
     });
+    console.log(name, value);
+  };
+
+  handleNonStop = event => {
+    this.setState({
+      nonStopOnly: !this.state.nonStopOnly
+    });
+    console.log(this.state.nonStopOnly);
   };
 
   handleDateFlightFromChange = event => {
@@ -33,7 +42,7 @@ export default class FlightsForm extends Component {
     if (newDateFrom > newDateTo) {
       this.setState({
         dateFlightFrom: newDateFrom,
-        dateFlightTo: newDateFrom
+        dateFlightTo: getDatePlus(newDateFrom, 1)
       });
     } else {
       this.setState({
@@ -47,7 +56,7 @@ export default class FlightsForm extends Component {
     let newDateTo = new Date(event.target.value);
     if (newDateFrom > newDateTo) {
       this.setState({
-        dateFlightFrom: newDateTo,
+        dateFlightFrom: getDatePlus(newDateTo, -1),
         dateFlightTo: newDateTo
       });
     } else {
@@ -63,7 +72,7 @@ export default class FlightsForm extends Component {
     const { flightFrom, flightTo, dateFlightFrom, dateFlightTo } = this.state;
 
     trackPromise(
-      getFlights(
+      getAll(
         flightFrom,
         flightTo,
         getDateApi(dateFlightFrom),
@@ -71,8 +80,10 @@ export default class FlightsForm extends Component {
       ).then(response => {
         this.props.refreshflightsList(response);
         this.setState({
-          flightsDataInbound: response.flightsDataInbound,
-          flightsDataOutbound: response.flightsDataOutbound,
+          flightsDataInbound: response[0].data,
+          flightsDataOutbound: response[1].data,
+          hotelDetails: response[2].data,
+          activitiesDetails: response[3].data
         });
       })
     ).catch(err => {
@@ -143,9 +154,24 @@ export default class FlightsForm extends Component {
             </Col>
           </Form.Row>
           <Form.Row>
+            <Col align="left">
+              <br />
+              <Alert variant="primary">
+                <Form.Check
+                  inline
+                  label="Non-stop flights only"
+                  type="checkbox"
+                  id="nonStopOnly"
+                  name="nonStopOnly"
+                  onClick={this.handleNonStop}
+                />
+              </Alert>
+            </Col>
+          </Form.Row>
+          <Form.Row>
             <Col>
               <br />
-              <Button type="submit">Flight Search</Button>
+              <Button type="submit">Experience Search</Button>
             </Col>
           </Form.Row>
         </Form>

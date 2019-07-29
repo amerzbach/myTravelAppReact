@@ -6,21 +6,8 @@ const qs = require("qs");
 router.post("/", (req, res) => {
   const { flightFrom, flightTo, dateFlightFrom, dateFlightTo } = req.body;
 
-  function returnDate(date) {
-    let splitArray = new Array();
-    splitArray = date.split("T");
-    return splitArray;
-  }
-
-newDateFlightFrom = returnDate(dateFlightFrom);
-newDateFlightTo = returnDate(dateFlightTo);
-
 
   resObject = {
-    flightFrom: flightFrom,
-    flightTo: flightTo,
-    dateFlightFrom: newDateFlightFrom,
-    dateFlightTo: newDateFlightTo,
     flightsDataInbound: {},
     flightsDataOutbound: {}
   };
@@ -43,12 +30,9 @@ newDateFlightTo = returnDate(dateFlightTo);
     )
     .then(token => {
       tokenRes = token;
-      // console.log("Token ",tokenRes);
 
-      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${newDateFlightFrom}?directFlights=false`;
-      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${newDateFlightTo}?directFlights=false`;
-
-      console.log(lhUrl1, lhUrl2);
+      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${dateFlightFrom}?directFlights=false`;
+      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${dateFlightTo}?directFlights=false`;
 
       const config = {
         headers: {
@@ -64,7 +48,6 @@ newDateFlightTo = returnDate(dateFlightTo);
         axios.get(lhUrl2, config).then(flightsResult => {
           resObject.flightsDataOutbound =
             flightsResult.data.ScheduleResource.Schedule;
-          console.log(resObject.flightsDataOutbound);
           res.json(resObject);
         });
       });
