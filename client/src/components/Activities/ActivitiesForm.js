@@ -13,7 +13,7 @@ export default class ActivitiesForm extends Component {
   state = {
     flightTo: "",
     dateFlightFrom: getToday(0),
-    dateFlightTo: getToday(0),
+    dateFlightTo: getToday(1),
     activitiesData: [],
     error: ""
   };
@@ -71,9 +71,6 @@ export default class ActivitiesForm extends Component {
         console.log(response.activitiesList.activities)
         this.props.refreshActivitiesList(response.activitiesList.activities);
         this.setState({
-          flightTo: response.flightTo,
-          dateFlightFrom: new Date(response.dateFlightFrom),
-          dateFlightTo: new Date(response.dateFlightTo),
           activitiesData: response.activitiesList.activities
         });
       })

@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import Hero from "../components/hero/hero"
+import React, { Component } from "react";
+import Hero from "../components/hero/hero";
 import ActivitiesForm from "../components/Activities/ActivitiesForm";
 import ActivitiesList from "../components/Activities/ActivitiesList";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default class Activities extends Component {
   state = {
@@ -9,22 +12,23 @@ export default class Activities extends Component {
   };
 
   refreshActivitiesList = response => {
-    this.setState ({
+    this.setState({
       activitiesData: response
-    })}
+    });
+  };
 
   render() {
     return (
-      <div>
-                 <Hero
-          videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4"
-          h1="Activities"
-          h2="Things to do. Excursions."
-        />
-        
-        <ActivitiesForm refreshActivitiesList={this.refreshActivitiesList}/>
-        <ActivitiesList activitiesData={this.state.activitiesData}/>
-      </div>
-    )
+      <Container>
+        <Row>
+          <Col>
+            <ActivitiesForm
+              refreshActivitiesList={this.refreshActivitiesList}
+            />
+            <ActivitiesList activitiesData={this.state.activitiesData} />
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }

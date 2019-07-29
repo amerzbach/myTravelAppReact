@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Card, CardDeck, Button } from "react-bootstrap";
+import mapboxgl from "mapbox.gl";
+
+mapboxgl.accessToken = "pk.eyJ1IjoiYW1lcnpiYWNoIiwiYSI6ImNqeW82Y3g1MTBwM2szaW1veHN3ZzhrMGkifQ.CvCz6JOCwSXuVqptzE96NA";
 
 const HotelsList = props => {
   return (

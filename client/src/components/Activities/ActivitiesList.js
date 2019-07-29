@@ -13,7 +13,28 @@ const ActivitiesList = props => {
       {props.activitiesData.length > 0 && (
         <div align="center">
           {props.activitiesData.map(activity => {
-            return <div><h1>{activity.name}</h1></div>;
+            // const url = {{activity.media.images.urls}}.find(({activity.media.images.urls.sizeType}==="XLARGE"))
+            // console.log (url)
+
+            // const description = `{activity.content.description}`;
+            /*  const description = document.getElementById("description");
+            console.log(description);
+            description.innerHTML = `{activity.content.description}`; */
+            return (
+              <div>
+                <Link to={`/Activities/${activity.code}`}>
+                  <h1>{activity.content.name}</h1>
+                </Link>
+                <img
+                  src={`${activity.content.media.images[0].urls[2].resource}`}
+                  alt="Activity"
+                  align="right"
+                />
+                
+                <div dangerouslySetInnerHTML={{ __html: activity.content.description }} align="left"/>
+                <div id="description" />
+              </div>
+            );
           })}
         </div>
       )}
