@@ -7,6 +7,7 @@ import Flights from "./containers/Flights";
 import Hotels from "./containers/Hotels";
 import HotelDetails from "./containers/HotelDetails";
 import Activities from "./containers/Activities";
+import ActivityDetails from "./containers/ActivityDetails";
 import Hero from "./components/hero/hero";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/Hotels" component={Hotels} />
         <Route exact path="/Hotels/:id" component={HotelDetails} />
         <Route exact path="/Activities" component={Activities} />
+        <Route exact path="/Activities/:id" component={ActivityDetails} />
       </Switch>
     </div>
   );

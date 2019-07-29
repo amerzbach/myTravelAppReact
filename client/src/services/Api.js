@@ -49,4 +49,13 @@ const getActivities = (flightTo, dateFlightFrom, dateFlightTo) => (
   })
 )
 
-export { getFlights,getHotels, getHotelDetails, getActivities };
+const getActivityDetails = (activityId) => (
+  axios
+  .get(`/api/Activities/search/${activityId}`)
+  .then(response => {
+    console.log(response);
+    return response.data;
+  })
+)
+
+export { getFlights,getHotels, getHotelDetails, getActivities, getActivityDetails };

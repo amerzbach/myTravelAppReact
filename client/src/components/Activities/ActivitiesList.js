@@ -16,10 +16,6 @@ const ActivitiesList = props => {
             // const url = {{activity.media.images.urls}}.find(({activity.media.images.urls.sizeType}==="XLARGE"))
             // console.log (url)
 
-            // const description = `{activity.content.description}`;
-            /*  const description = document.getElementById("description");
-            console.log(description);
-            description.innerHTML = `{activity.content.description}`; */
             return (
               <div>
                 <Link to={`/Activities/${activity.code}`}>
@@ -32,7 +28,6 @@ const ActivitiesList = props => {
                 />
                 
                 <div dangerouslySetInnerHTML={{ __html: activity.content.description }} align="left"/>
-                <div id="description" />
               </div>
             );
           })}
