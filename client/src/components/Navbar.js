@@ -3,14 +3,14 @@ import { Navbar } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
-
-          <Navbar className="nav" bg="primary" variant="dark">
-            <Navbar.Brand href="/">myTravelApp v1</Navbar.Brand>
-            <Navbar.Brand href="/Flights">Flights</Navbar.Brand>
-            <Navbar.Brand href="/Hotels">Hotels</Navbar.Brand>
-            <Navbar.Brand href="/Activities">Activities</Navbar.Brand>
-          </Navbar>
-
+    <Navbar className="nav" bg="dark" variant="dark">
+      <Navbar.Brand href="/">ExperienceHub.</Navbar.Brand>
+      <Navbar.Brand href="/Flights">FlyHigh</Navbar.Brand>
+      <Navbar.Brand href="/Hotels">SleepDeep</Navbar.Brand>
+      <Navbar.Brand href="/Activities">ExperienceGuide</Navbar.Brand>
+      <Navbar.Brand href="/Signup">SignUp</Navbar.Brand>
+      <Navbar.Brand href="/Login">LogIn</Navbar.Brand>
+    </Navbar>
   );
 };
 

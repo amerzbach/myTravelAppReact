@@ -19,16 +19,16 @@ export default class Activities extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
-            <ActivitiesForm
-              refreshActivitiesList={this.refreshActivitiesList}
-            />
-            <ActivitiesList activitiesData={this.state.activitiesData} />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Hero
+          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
+          h1="Experience the new."
+          h2="Guide yourself to the most thrilling and calming places on earth."
+        />
+
+        <ActivitiesForm refreshActivitiesList={this.refreshActivitiesList} />
+        <ActivitiesList activitiesData={this.state.activitiesData} />
+      </div>
     );
   }
 }

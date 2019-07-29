@@ -70,9 +70,6 @@ export default class HotelsForm extends Component {
       ).then(response => {
         this.props.refreshHotelsList(response);
         this.setState({
-          flightTo: response.flightTo,
-          dateFlightFrom: new Date(response.dateFlightFrom),
-          dateFlightTo: new Date(response.dateFlightTo),
           hotelsData: response.hotelsData
         });
       })
