@@ -23,7 +23,7 @@ export default class Activities extends Component {
         <Hero
           videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
           h1="Experience the new."
-          h2="Guide yourself to the most thrilling and calming places on earth."
+          h2="Guide yourself through the the most exciting Activities"
         />
 
         <ActivitiesForm refreshActivitiesList={this.refreshActivitiesList} />

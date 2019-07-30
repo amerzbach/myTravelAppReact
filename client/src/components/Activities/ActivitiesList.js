@@ -13,23 +13,23 @@ import {
 const ActivitiesList = props => {
   return (
     <div
-      align="center"
-      style={{ position: "absolute", zIndex: 1, width: "100%", align: "center" }}
+      style={{ position: "absolute", zIndex: 1, width: "100%", textAlign: "center" }}
     >
       <br />
 
       {props.activitiesData.length > 0 && (
         <Container>
-          <Row>
+          <Row lg="12">
             {props.activitiesData.map(activity => {
               // const url = {{activity.media.images.urls}}.find(({activity.media.images.urls.sizeType}==="XLARGE"))
               // console.log (url)
 
               return (
-                <Card style={{ width: "17rem", align: "center" }}>
+               <Card style={{ width: "17rem", align: "center" }}>
                   <Card.Img
                     variant="top"
                     src={`${activity.content.media.images[0].urls[1].resource}`}
+                    rounded
                   />
                   <Card.Body>
                     <Card.Title>{activity.content.name.toUpperCase()}</Card.Title>

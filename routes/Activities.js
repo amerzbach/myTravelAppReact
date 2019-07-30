@@ -32,7 +32,7 @@ router.get("/", (req, res, next) => {
   const params = {
     filters: [
       {
-        searchFilterItems: [{ type: "destination", value: "BCN" }]
+        searchFilterItems: [{ type: "destination", value: "PMI" }]
       }
     ],
     from: "2019-08-15",
@@ -151,8 +151,6 @@ router.get('/search/:activityId', (req, res, next) => {
       }
     })
     .then(result => {
-      console.log(result.data.activitiesContent[0]);
-      // resObject.activitiesList = result.data;
       res.json(result.data.activitiesContent[0]);
     })
     .catch(err => {

@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import ActivitiesForm from "../components/Activities/ActivitiesForm";
 import { getActivityDetails } from "../services/Api";
+import { Container, Row, Col, Badge } from "react-bootstrap";
 
 export default class ActivityDetails extends Component {
   state = {
@@ -24,14 +26,30 @@ export default class ActivityDetails extends Component {
     this.getActivityData();
   }
 
-
   render() {
     return (
-      <div>
-        <h1>{this.state.activityDetails.name}</h1>
-
-        <div dangerouslySetInnerHTML={{ __html: this.state.activityDetails.description }} align="left"/>
-      </div>
-    )
+      <Row>
+        <Col
+          lg="2"
+          style={{ verticalAlign: `center`, backgroundColor: `lightblue` }}
+        >
+          <ActivitiesForm />
+        </Col>
+        <Col style={{ verticalAlign: "top", align: "left" }}>
+          <h3>
+            {this.state.activityDetails.name}
+            <Badge pill variant="primary">
+            {this.state.activityDetails.currency}
+            </Badge>
+          </h3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.state.activityDetails.description
+            }}
+            align="left"
+          />
+        </Col>
+      </Row>
+    );
   }
 }

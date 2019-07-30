@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Badge } from "react-bootstrap";
 import { getActivities } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
@@ -14,8 +14,7 @@ export default class ActivitiesForm extends Component {
     flightTo: "",
     dateFlightFrom: getToday(0),
     dateFlightTo: getToday(1),
-    activitiesData: [],
-    error: ""
+    activitiesData: []
   };
 
   handleChange = event => {
@@ -33,7 +32,7 @@ export default class ActivitiesForm extends Component {
     if (newDateFrom >= newDateTo) {
       this.setState({
         dateFlightFrom: newDateFrom,
-        dateFlightTo: getDatePlus(newDateFrom,0)
+        dateFlightTo: getDatePlus(newDateFrom, 0)
       });
     } else {
       this.setState({
@@ -47,7 +46,7 @@ export default class ActivitiesForm extends Component {
     let newDateTo = new Date(event.target.value);
     if (newDateFrom >= newDateTo) {
       this.setState({
-        dateFlightFrom: getDatePlus(newDateTo,0),
+        dateFlightFrom: getDatePlus(newDateTo, 0),
         dateFlightTo: newDateTo
       });
     } else {
@@ -68,7 +67,7 @@ export default class ActivitiesForm extends Component {
         getDateApi(dateFlightFrom),
         getDateApi(dateFlightTo)
       ).then(response => {
-        console.log(response.activitiesList.activities)
+        console.log(response.activitiesList.activities);
         this.props.refreshActivitiesList(response.activitiesList.activities);
         this.setState({
           activitiesData: response.activitiesList.activities
@@ -82,57 +81,74 @@ export default class ActivitiesForm extends Component {
   render() {
     return (
       <div align="center">
-        <Form onSubmit={this.handleSubmit} style={{ width: "95%" }}>
-          <Form.Row>
-            <Col>
-              <Form.Label htmlFor="flightTo">Activity Location</Form.Label>
+        <Container>
+          <Row>
+            <Col lg={true}>
+              <Form onSubmit={this.handleSubmit} style={{ width: "95%" }}>
+                <Form.Row>
+                  <Col lg="4">
+                    <Form.Label htmlFor="flightTo">
+                      <h4>
+                        <Badge variant="info">Activity Location</Badge>
+                      </h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={this.handleChange}
+                      id="flightTo"
+                      name="flightTo"
+                      value={this.state.flightTo || ""}
+                      placeholder="Destination airport IATA Code"
+                      required
+                    />
+                  </Col>
 
-              <Form.Control
-                type="text"
-                onChange={this.handleChange}
-                id="flightTo"
-                name="flightTo"
-                value={this.state.flightTo || ""}
-                placeholder="Destination airport IATA Code"
-                required
-              />
+                  <Col lg="4">
+                    <Form.Label htmlFor="dateFlightFrom">
+                      <h4>
+                        <Badge variant="info">Date From</Badge>
+                      </h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="date"
+                      onChange={this.handleDateFlightFromChange}
+                      id="dateFlightFrom"
+                      name="dateFlightFrom"
+                      value={getFormDate(this.state.dateFlightFrom)}
+                      min={getFormDate(getToday(0))}
+                      required
+                    />
+                  </Col>
+
+                  <Col lg="4">
+                    <Form.Label htmlFor="dateFlightTo">
+                      <h4>
+                        <Badge variant="info">Date To</Badge>
+                      </h4>
+                    </Form.Label>
+
+                    <Form.Control
+                      type="date"
+                      onChange={this.handleDateFlightToChange}
+                      id="dateFlightTo"
+                      name="dateFlightTo"
+                      value={getFormDate(this.state.dateFlightTo)}
+                      min={getFormDate(getToday(1))}
+                      required
+                    />
+                  </Col>
+                </Form.Row>
+                <Form.Row>
+                  <Col>
+                    <br />
+                    <Button type="submit">Activities Search</Button>
+                  </Col>
+                </Form.Row>
+              </Form>
             </Col>
-
-            <Col>
-              <Form.Label htmlFor="dateFlightFrom">Date From</Form.Label>
-
-              <Form.Control
-                type="date"
-                onChange={this.handleDateFlightFromChange}
-                id="dateFlightFrom"
-                name="dateFlightFrom"
-                value={getFormDate(this.state.dateFlightFrom)}
-                min={getFormDate(getToday(0))}
-                required
-              />
-            </Col>
-
-            <Col>
-              <Form.Label htmlFor="dateFlightTo">Date To</Form.Label>
-
-              <Form.Control
-                type="date"
-                onChange={this.handleDateFlightToChange}
-                id="dateFlightTo"
-                name="dateFlightTo"
-                value={getFormDate(this.state.dateFlightTo)}
-                min={getFormDate(getToday(1))}
-              />
-            </Col>
-          </Form.Row>
-          <Form.Row>
-            <Col>
-              <br />
-              <Button type="submit">Activities Search</Button>
-            </Col>
-          </Form.Row>
-        </Form>
-        </div>
-    )
+          </Row>
+        </Container>
+      </div>
+    );
   }
 }

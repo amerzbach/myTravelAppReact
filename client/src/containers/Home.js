@@ -16,7 +16,7 @@ export default class Home extends Component {
       <div>
         <Hero
           videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-          h1="ExperienceHub."
+          h1="myTravelApp"
           h2="The world is yours.Explore it. Make the Experience."
         />
 
