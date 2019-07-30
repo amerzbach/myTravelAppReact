@@ -88,9 +88,9 @@ export default class ActivitiesForm extends Component {
                 <Form.Row>
                   <Col lg="4">
                     <Form.Label htmlFor="flightTo">
-                      <h4>
-                        <Badge variant="info">Activity Location</Badge>
-                      </h4>
+                      <h5>
+                        Activity Location
+                      </h5>
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -105,9 +105,9 @@ export default class ActivitiesForm extends Component {
 
                   <Col lg="4">
                     <Form.Label htmlFor="dateFlightFrom">
-                      <h4>
-                        <Badge variant="info">Date From</Badge>
-                      </h4>
+                    <h5>
+                        Date From
+                      </h5>
                     </Form.Label>
                     <Form.Control
                       type="date"
@@ -122,9 +122,9 @@ export default class ActivitiesForm extends Component {
 
                   <Col lg="4">
                     <Form.Label htmlFor="dateFlightTo">
-                      <h4>
-                        <Badge variant="info">Date To</Badge>
-                      </h4>
+                    <h5>
+                        Date To
+                      </h5>
                     </Form.Label>
 
                     <Form.Control

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getHotelDetails } from "../services/Api";
 import Carousel from "react-bootstrap/Carousel";
+import Hero from "../components/hero/hero";
 
 export default class HotelDetails extends Component {
   state = {
@@ -27,7 +28,9 @@ export default class HotelDetails extends Component {
 
   render() {
     return (
-      <div align="center" style = {{width: "95%"}}>
+      <div align="center" style={{ width: "100%" }}>
+        <Hero videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4" />
+
         {Object.entries(this.state.hotelDetails).length > 0 && (
           <div>
             <h1>

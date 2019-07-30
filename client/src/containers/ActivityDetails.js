@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ActivitiesForm from "../components/Activities/ActivitiesForm";
 import { getActivityDetails } from "../services/Api";
 import { Container, Row, Col, Badge } from "react-bootstrap";
+import Navbar from "../components/Navbar";
 
 export default class ActivityDetails extends Component {
   state = {
@@ -28,6 +29,10 @@ export default class ActivityDetails extends Component {
 
   render() {
     return (
+      <>
+      <Navbar />
+      
+
       <Row>
         <Col
           lg="2"
@@ -50,6 +55,8 @@ export default class ActivityDetails extends Component {
           />
         </Col>
       </Row>
+
+      </>
     );
   }
 }

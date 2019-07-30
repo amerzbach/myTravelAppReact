@@ -12,7 +12,7 @@ import Hero from "./components/hero/hero";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
 
       <Switch>
@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/Activities" component={Activities} />
         <Route exact path="/Activities/:id" component={ActivityDetails} />
       </Switch>
-    </div>
+    </>
   );
 }
 

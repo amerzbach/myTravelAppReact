@@ -13,7 +13,12 @@ import {
 const ActivitiesList = props => {
   return (
     <div
-      style={{ position: "absolute", zIndex: 1, width: "100%", textAlign: "center" }}
+      style={{
+        position: "absolute",
+        zIndex: 1,
+        width: "100%",
+        textAlign: "center"
+      }}
     >
       <br />
 
@@ -25,21 +30,26 @@ const ActivitiesList = props => {
               // console.log (url)
 
               return (
-               <Card style={{ width: "17rem", align: "center" }}>
+                <Card style={{ width: "17rem", align: "center" }}>
                   <Card.Img
                     variant="top"
                     src={`${activity.content.media.images[0].urls[1].resource}`}
                     rounded
                   />
                   <Card.Body>
-                    <Card.Title>{activity.content.name.toUpperCase()}</Card.Title>
+                    <Card.Title>
+                      {activity.content.name.toUpperCase()}
+                    </Card.Title>
+                    <Card.Text>
+                      <p class="block-with-text">
+                        {activity.content.description}
+                      </p>
+                    </Card.Text>
                   </Card.Body>
-                  <Card.Text>
-                     <p class="block-with-text">{activity.content.description}</p></Card.Text>
                   <Card.Footer>
-                  <Link to={`/Activities/${activity.code}`}>
-                    <Button variant="primary">More info</Button>
-                  </Link>
+                    <Link to={`/Activities/${activity.code}`}>
+                      <Button variant="primary">More info</Button>
+                    </Link>
                   </Card.Footer>
                 </Card>
               );
