@@ -42,10 +42,7 @@ export default class ActivityDetails extends Component {
         </Col>
         <Col style={{ verticalAlign: "top", align: "left" }}>
           <h3>
-            {this.state.activityDetails.name}
-            <Badge pill variant="primary">
-            {this.state.activityDetails.currency}
-            </Badge>
+          {this.state.activityDetails.name}
           </h3>
           <div
             dangerouslySetInnerHTML={{

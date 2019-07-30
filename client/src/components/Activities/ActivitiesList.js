@@ -31,19 +31,27 @@ const ActivitiesList = props => {
 
               return (
                 <Card style={{ width: "17rem", align: "center" }}>
-                  <Card.Img
-                    variant="top"
-                    src={`${activity.content.media.images[0].urls[1].resource}`}
-                    rounded
-                  />
+                  <Link to={`/Activities/${activity.code}`}>
+                    <Card.Img
+                      variant="top"
+                      src={`${
+                        activity.content.media.images[0].urls[1].resource
+                      }`}
+                      rounded class="card-img-top" />
+                  </Link>
                   <Card.Body>
                     <Card.Title>
-                      {activity.content.name.toUpperCase()}
+                      <Link to={`/Activities/${activity.code}`}>
+                        {activity.content.name.toUpperCase()}
+                      </Link>
                     </Card.Title>
                     <Card.Text>
-                      <p class="block-with-text">
-                        {activity.content.description}
-                      </p>
+                      <p
+                        class="block-with-text"
+                        dangerouslySetInnerHTML={{
+                          __html: activity.content.description
+                        }}
+                      />
                     </Card.Text>
                   </Card.Body>
                   <Card.Footer>

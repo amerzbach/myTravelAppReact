@@ -12,23 +12,26 @@ const HotelsList = props => {
       <br />
 
       {props.hotelsData.length > 0 && (
-        <Container>
+        <Container style={{textAlignment: "center"}}>
           <Row lg="12">
             {props.hotelsData.map(Hotel => {
               return (
                 <Card style={{ width: "17rem", align: "center" }}>
-                  <Card.Img
-                    variant="top"
-                    src={`http://photos.hotelbeds.com/giata/bigger/${
-                      Hotel.images[0].path
-                    }`}
-                    rounded
-                  />
+                  <Link to={`/Hotels/${Hotel.code}`}>
+                    <Card.Img
+                      variant="top"
+                      src={`http://photos.hotelbeds.com/giata/bigger/${
+                        Hotel.images[0].path
+                      }`}
+                     class="card-img-top"
+                    />
+                  </Link>
                   <Card.Body>
                     <Card.Title>
                       <Link to={`/Hotels/${Hotel.code}`}>
-                        {Hotel.name.content.toUpperCase()} 
+                        {Hotel.name.content.toUpperCase()}
                       </Link>
+                      <br />
                       <img
                         src={`http://cdn4.hotelopia.com/freya/img/stars/${
                           Hotel.categoryCode
@@ -40,6 +43,11 @@ const HotelsList = props => {
                       <p class="block-with-text">{Hotel.description.content}</p>
                     </Card.Text>
                   </Card.Body>
+                  <Card.Footer>
+                    <Link to={`/Hotels/${Hotel.code}`}>
+                      <Button variant="primary">More info</Button>
+                    </Link>
+                  </Card.Footer>
                 </Card>
               );
             })}

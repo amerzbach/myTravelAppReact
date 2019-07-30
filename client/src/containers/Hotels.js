@@ -16,7 +16,7 @@ export default class Hotels extends Component {
   
   render() {
     return (
-      <div>
+      <div align="centre">
          <Hero
           videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4"
           h1="Hotels"
