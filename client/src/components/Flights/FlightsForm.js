@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import { Alert,Form, Button, Col } from "react-bootstrap";
 import { getFlights } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
@@ -16,14 +16,19 @@ export default class FlightsForm extends Component {
     dateFlightTo: getToday(0),
     flightsDataInbound: [],
     flightsDataOutbound: [],
-    error: "",
+    nonStopOnly: false
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
+    });
+  };
+
+  handleNonStop = event => {
+    this.setState({
+      nonStopOnly: !this.state.nonStopOnly
     });
   };
 
@@ -69,10 +74,10 @@ export default class FlightsForm extends Component {
         getDateApi(dateFlightFrom),
         getDateApi(dateFlightTo)
       ).then(response => {
-        this.props.refreshflightsList(response);
+        this.props.refreshflightsList(response.flightsDataInbound,response.flightsDataOutbound,this.state.nonStopOnly);
         this.setState({
           flightsDataInbound: response.flightsDataInbound,
-          flightsDataOutbound: response.flightsDataOutbound,
+          flightsDataOutbound: response.flightsDataOutbound
         });
       })
     ).catch(err => {
@@ -140,6 +145,21 @@ export default class FlightsForm extends Component {
                 value={getFormDate(this.state.dateFlightTo)}
                 min={getFormDate(getToday(0))}
               />
+            </Col>
+          </Form.Row>
+          <Form.Row>
+            <Col align="left">
+              <br />
+              <Alert variant="primary">
+                <Form.Check
+                  inline
+                  label="Non-stop flights only"
+                  type="checkbox"
+                  id="nonStopOnly"
+                  name="nonStopOnly"
+                  onClick={this.handleNonStop}
+                />
+              </Alert>
             </Col>
           </Form.Row>
           <Form.Row>

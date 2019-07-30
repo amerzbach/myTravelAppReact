@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
 
   resObject = {
     flightsDataInbound: {},
-    flightsDataOutbound: {}
+    flightsDataOutbound: {},
   };
 
   const tokenParams = {

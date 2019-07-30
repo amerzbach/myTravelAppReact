@@ -4,8 +4,15 @@ import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const FlightsList = props => {
   return (
-    <div align="center" style={{position: "absolute", zIndex: 1, width: "100%"}}>
+    <div
+      align="center"
+      style={{ position: "absolute", zIndex: 1, width: "100%" }}
+    >
       <br />
+
+      {props.inboundFlights.length === 0 && <Alert variant="danger">No inbound flights found</Alert>}
+
+      {props.nonStopFlights === true ? <Alert variant="danger">True</Alert> : <Alert variant="danger">False</Alert>}
 
       {props.inboundFlights.length > 0 && (
         <Table
@@ -117,6 +124,8 @@ const FlightsList = props => {
       )}
 
       <br />
+
+      {props.outboundFlights.length === 0 && <Alert variant="danger">No outbound flights found</Alert>}
 
       {props.outboundFlights.length > 0 && (
         <Table

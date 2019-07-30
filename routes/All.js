@@ -101,11 +101,16 @@ router.post("/", (req, res) => {
 
       Promise.all(promisesArr)
         .then(response => {
+          console.log(response);
           // console.log(res[0].data);
           // console.log(res[1].data);
           // console.log(res[2].data);
           // console.log(res[3].data);
-          res.json(response);
+          // res.json(response);
+          const resArray = response.map(element => {
+            return element.data;
+          });
+          res.json(resArray);
         })
         .catch(err => {
           console.log(err);
