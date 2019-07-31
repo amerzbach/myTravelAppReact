@@ -51,11 +51,9 @@ app.use(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
-// Uncoment for the DEV
-app.use(express.static(path.join(__dirname, "public")));
 
-// Uncoment for the production Build
-// app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
