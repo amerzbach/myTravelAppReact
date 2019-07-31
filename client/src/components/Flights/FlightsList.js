@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Alert, Tabs, Tab } from "react-bootstrap";
+import { Table, Tabs, Tab } from "react-bootstrap";
 import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const FlightsList = props => {
@@ -138,10 +138,6 @@ const FlightsList = props => {
             )}
 
             <br />
-
-            {props.outboundFlights.length === 0 && (
-              <Alert variant="danger">No outbound flights found</Alert>
-            )}
 
             {props.outboundFlights.length > 0 && (
               <Tab eventKey="outbound" title="Outbound Flights">

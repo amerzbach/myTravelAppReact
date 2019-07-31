@@ -32,7 +32,6 @@ export default class Flights extends Component {
           <FlightsList
             inboundFlights={this.state.flightsDataInbound}
             outboundFlights={this.state.flightsDataOutbound}
-            nonStopOnly={this.state.nonStopOnly}
           />
         </center>
       </div>

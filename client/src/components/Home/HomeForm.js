@@ -70,12 +70,13 @@ export default class HomeForm extends Component {
         getDateApi(dateFlightFrom),
         getDateApi(dateFlightTo)
       ).then(response => {
-        this.props.refreshflightsList(response);
+        console.log(response[3].activities);
+        this.props.refreshHomeList(response[0].ScheduleResource.Schedule,response[1].ScheduleResource.Schedule,response[2].hotels,response[3].activities);
         this.setState({
-          flightsDataInbound: response[0].data,
-          flightsDataOutbound: response[1].data,
-          hotelDetails: response[2].data,
-          activitiesDetails: response[3].data
+          flightsDataInbound: response[0].ScheduleResource.Schedule,
+          flightsDataOutbound: response[1].ScheduleResource.Schedule,
+          hotelDetails: response[2].hotels,
+          activitiesDetails: response[3].activities
         });
       })
     ).catch(err => {

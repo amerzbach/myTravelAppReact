@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Col, Row, Container, Badge } from "react-bootstrap";
+import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { getActivities } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {

@@ -11,13 +11,17 @@ export default class Home extends Component {
     activitiesDetails: []
   };
 
-  refreshhomeList = (
+  refreshHomeList = (
     flightsDataInbound,
-    flightsDataOutbound
+    flightsDataOutbound,
+    hotelDetails,
+    activitiesDetails
   ) => {
     this.setState({
       flightsDataInbound: flightsDataInbound,
-      flightsDataOutbound: flightsDataOutbound
+      flightsDataOutbound: flightsDataOutbound,
+      hotelDetails: hotelDetails,
+      activitiesDetails: activitiesDetails
     });
   };
 
@@ -31,7 +35,7 @@ export default class Home extends Component {
           h2="Flights + Hotels + Activities"
         />
 
-        <HomeForm refreshHotelsList={this.refreshHotelsList} />
+        <HomeForm refreshHomeList={this.refreshHomeList} />
         <HomeList inboundFlights={this.state.flightsDataInbound}
           outboundFlights={this.state.flightsDataOutbound}
           hotelDetails={this.state.hotelDetails} 
