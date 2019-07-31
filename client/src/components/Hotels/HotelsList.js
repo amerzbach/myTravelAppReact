@@ -45,7 +45,7 @@ export default class HotelsList extends Component {
                       {this.props.hotelsData.map(Hotel => {
                         return (
                           <Card
-                            style={{ align: "center", margin: "2px" }}
+                            style={{ align: "center", margin: "2px"}}
                             className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
                           >
                             <Link to={`/Hotels/${Hotel.code}`}>
