@@ -20,7 +20,7 @@ export default class Activities extends Component {
         <center>
           <Hero
             videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-            h1="Experience the new."
+            h1="Experience the new"
             h2="Guide yourself through the the most exciting Activities"
           />
 
