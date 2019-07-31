@@ -141,7 +141,7 @@ export default class ActivitiesForm extends Component {
                 <Form.Row>
                   <Col>
                     <br />
-                    <Button type="submit">Activities Search</Button>
+                    <Button type="submit" size="lg">Activities Search</Button>
                   </Col>
                 </Form.Row>
               </Form>

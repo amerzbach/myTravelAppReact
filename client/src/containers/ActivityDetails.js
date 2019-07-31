@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ActivitiesForm from "../components/Activities/ActivitiesForm";
 import { getActivityDetails } from "../services/Api";
-import { Container, Row, Col, Badge } from "react-bootstrap";
 import Navbar from "../components/Navbar";
+import Hero from "../components/hero/hero";
+import { Row } from "react-bootstrap";
 
 export default class ActivityDetails extends Component {
   state = {
@@ -29,31 +29,20 @@ export default class ActivityDetails extends Component {
 
   render() {
     return (
-      <>
-      <Navbar />
-      
+      <div align="center" style={{ width: "100%" }}>
+        <Hero videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4" />
 
-      <Row>
-        <Col
-          lg="2"
-          style={{ verticalAlign: `center`, backgroundColor: `lightblue` }}
-        >
-          <ActivitiesForm />
-        </Col>
-        <Col style={{ verticalAlign: "top", align: "left" }}>
-          <h3>
-          {this.state.activityDetails.name}
-          </h3>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: this.state.activityDetails.description
-            }}
-            align="left"
-          />
-        </Col>
-      </Row>
+        <div style={{ width: "95%",backgroundColor: "white", padding:"10px",textAlign: "left" }}>
+        <h2>{this.state.activityDetails.name}</h2>
 
-      </>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: this.state.activityDetails.description
+          }}
+          align="left"
+        />
+      </div>
+      </div>
     );
   }
 }

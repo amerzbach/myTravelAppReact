@@ -16,15 +16,17 @@ export default class Hotels extends Component {
 
   render() {
     return (
-      <div align="centre">
+      <div>
+        <center>
         <Hero
           videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4"
           h1="Hotels"
-          h2="Whether luxurious, comfortable or just exciting. You choose."
+          h2="Whether luxurious, comfortable or just exciting. Choose your Hotel"
         />
 
         <HotelsForm refreshHotelsList={this.refreshHotelsList} />
         <HotelsList hotelsData={this.state.hotelsData} />
+        </center>
       </div>
     );
   }

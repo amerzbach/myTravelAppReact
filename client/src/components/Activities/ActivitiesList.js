@@ -25,8 +25,8 @@ const ActivitiesList = props => {
             {props.activitiesData.map(activity => {
               return (
                 <Card
-                  style={{align: "center", margin: "5px" }}
-                  className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-sm-12"
+                  style={{align: "center", margin: "2px" }}
+                  className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
                 >
                   <Link to={`/Activities/${activity.code}`}>
                     <Card.Img
