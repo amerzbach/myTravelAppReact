@@ -5,8 +5,6 @@ import { Container, Col, Row, Card, CardDeck, Button } from "react-bootstrap";
 import mapboxgl from "mapbox-gl";
 
 const HotelsList = props => {
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoiYW1lcnpiYWNoIiwiYSI6ImNqeW82Y3g1MTBwM2szaW1veHN3ZzhrMGkifQ.CvCz6JOCwSXuVqptzE96NA";
 
   return (
     <div

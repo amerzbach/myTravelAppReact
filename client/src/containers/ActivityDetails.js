@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { getActivityDetails } from "../services/Api";
-import Navbar from "../components/Navbar";
 import Hero from "../components/hero/hero";
-import { Row } from "react-bootstrap";
 
 export default class ActivityDetails extends Component {
   state = {
