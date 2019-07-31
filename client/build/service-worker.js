@@ -15,9 +15,13 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 
 importScripts(
 <<<<<<< HEAD
+<<<<<<< HEAD
   "/precache-manifest.99295c0eea7d892b08162cf3bbce2f09.js"
 =======
   "/precache-manifest.bb243d1a81f49a32e7e398a9f5a327cc.js"
+>>>>>>> development
+=======
+  "/precache-manifest.2c130685905f6a083e43846efeb7ef77.js"
 >>>>>>> development
 );
 
