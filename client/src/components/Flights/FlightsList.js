@@ -9,7 +9,6 @@ const FlightsList = props => {
         position: "absolute",
         zIndex: 1,
         width: "100%",
-        color: "grey",
         align: "center"
       }}
     >
@@ -18,7 +17,6 @@ const FlightsList = props => {
         <div
           style={{
             width: "95%",
-            color: "grey",
             align: "center"
           }}
         >

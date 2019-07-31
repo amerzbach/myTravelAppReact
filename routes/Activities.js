@@ -96,7 +96,7 @@ router.post("/", (req, res, next) => {
     to: `${req.body.dateFlightTo}`,
     language: "en",
     pagination: {
-      itemsPerPage: 16,
+      itemsPerPage: 15,
       page: 1
     }
   };

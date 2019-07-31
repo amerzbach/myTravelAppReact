@@ -64,8 +64,7 @@ export default class HotelDetails extends Component {
               <Col className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sm-12">
                 <h5>Description</h5>
                 <p>{this.state.hotelDetails.hotel.description.content}</p>
-              </Col>
-              <Col className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-sm-12">
+
                 <h5>Location</h5>
                 <p>
                   {this.state.hotelDetails.hotel.address.content}{" "}
@@ -90,30 +89,32 @@ export default class HotelDetails extends Component {
                       this.state.hotelDetails.hotel.coordinates.longitude
                     }
                   >
-                    <Icon icon={home} /><h5>{this.state.hotelDetails.hotel.name.content}</h5>
+                    <Icon icon={home} />
+                    <h5>{this.state.hotelDetails.hotel.name.content}</h5>
                   </Marker>
                 </ReactMapGL>
               </Col>
+              <Col className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-sm-12">
+                <h5>Photos</h5>
+                <center>
+                  <Carousel className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                    {this.state.hotelDetails.hotel.images.map(image => {
+                      return (
+                        <Carousel.Item>
+                          <img
+                            className="d-block w-100"
+                            src={`http://photos.hotelbeds.com/giata/bigger/${
+                              image.path
+                            }`}
+                            alt=" "
+                          />
+                        </Carousel.Item>
+                      );
+                    })}
+                  </Carousel>
+                </center>
+              </Col>
             </Row>
-
-            <h5>Photos</h5>
-            <center>
-              <Carousel className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-sm-12">
-                {this.state.hotelDetails.hotel.images.map(image => {
-                  return (
-                    <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src={`http://photos.hotelbeds.com/giata/bigger/${
-                          image.path
-                        }`}
-                        alt=" "
-                      />
-                    </Carousel.Item>
-                  );
-                })}
-              </Carousel>
-            </center>
           </div>
         )}
       </div>

@@ -61,7 +61,7 @@ router.post("/", (req, res) => {
     hotelsData: {}
   };
 
-  const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${req.body.flightTo}&from=1&to=16`;
+  const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${req.body.flightTo}&from=1&to=15`;
 
   axios
     .get(urlApiHotels, {
