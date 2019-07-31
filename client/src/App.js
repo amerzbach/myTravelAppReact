@@ -8,7 +8,6 @@ import Hotels from "./containers/Hotels";
 import HotelDetails from "./containers/HotelDetails";
 import Activities from "./containers/Activities";
 import ActivityDetails from "./containers/ActivityDetails";
-import Hero from "./components/hero/hero";
 
 function App() {
   return (

@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+.custom-nav-bg {
+  background-color: #dddddd;
+}
+
+.custom-nav-bg li {
+  background-color: #ffffff;
+}
+
 .navLink {
   color: white;
 }
@@ -26,6 +34,8 @@ code {
 .nav-transparent {
   background-color: transparent;
 }
+
+
 
 .card-img-top {
   width: 100%;

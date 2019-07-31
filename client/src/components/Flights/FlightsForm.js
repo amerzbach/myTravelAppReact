@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert,Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { getFlights } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
@@ -85,7 +85,7 @@ export default class FlightsForm extends Component {
 
         <Form onSubmit={this.handleSubmit} style={{ width: "95%" }}>
           <Form.Row>
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="flightFrom">From</Form.Label>
 
               <Form.Control
@@ -99,7 +99,7 @@ export default class FlightsForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="flightTo">To</Form.Label>
 
               <Form.Control
@@ -113,7 +113,7 @@ export default class FlightsForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="dateFlightFrom">Date From</Form.Label>
 
               <Form.Control
@@ -127,7 +127,7 @@ export default class FlightsForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="dateFlightTo">Date To</Form.Label>
 
               <Form.Control
@@ -143,7 +143,7 @@ export default class FlightsForm extends Component {
           <Form.Row>
             <Col>
               <br />
-              <Button type="submit">Flight Search</Button>
+              <Button type="submit" size="lg">Flight Search</Button>
             </Col>
           </Form.Row>
         </Form>

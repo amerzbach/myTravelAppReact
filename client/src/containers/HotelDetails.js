@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { getHotelDetails } from "../services/Api";
+import { Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import Hero from "../components/hero/hero";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
+import { Icon } from "react-icons-kit";
+import { home } from "react-icons-kit/icomoon/home";
 
 export default class HotelDetails extends Component {
   state = {
     hotelDetails: [],
-    viewport: {
-      width: 400,
-      height: 400,
-      zoom: 8
-    }
+    width: 400,
+    height: 400,
+    zoom: 13
   };
 
   getHotelData = () => {
@@ -20,9 +21,7 @@ export default class HotelDetails extends Component {
     return getHotelDetails(hotelId)
       .then(response => {
         this.setState({
-          hotelDetails: response,
-          viewportlatitude: response.hotel.coordinates.latitude,
-          longitude: response.hotel.coordinates.longitude
+          hotelDetails: response
         });
       })
       .catch(err => {
@@ -48,50 +47,74 @@ export default class HotelDetails extends Component {
               textAlign: "left"
             }}
           >
-            <h2>
-              {this.state.hotelDetails.hotel.name.content}
-              <img
-                src={`http://cdn4.hotelopia.com/freya/img/stars/${
-                  this.state.hotelDetails.hotel.category.code
-                }.gif`}
-                alt="Hotel Stars"
-              />
-            </h2>
-            <h5>Description</h5>
-            <p>{this.state.hotelDetails.hotel.description.content}</p>
+            <Row>
+              <Col className="col-xl-12">
+                <h2>
+                  {this.state.hotelDetails.hotel.name.content}
+                  <img
+                    src={`http://cdn4.hotelopia.com/freya/img/stars/${
+                      this.state.hotelDetails.hotel.category.code
+                    }.gif`}
+                    alt="Hotel Stars"
+                  />
+                </h2>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-sm-12">
+                <h5>Description</h5>
+                <p>{this.state.hotelDetails.hotel.description.content}</p>
 
-            <h5>Location</h5>
-            <p>
-              {this.state.hotelDetails.hotel.address.content}{" "}
-              {this.state.hotelDetails.hotel.postalCode}{" "}
-              {this.state.hotelDetails.hotel.city.content}{" "}
-              {this.state.hotelDetails.hotel.country.description.content}
-            </p>
-            <p>{this.state.hotelDetails.hotel.coordinates.longitude}</p>
-            <p>{this.state.hotelDetails.hotel.coordinates.latitude}</p>
-            <ReactMapGL
-              {...this.state.viewport}
-              onViewportChange={viewport => this.setState({ viewport })}
-            />
-
-            <h5>Photos</h5>
-            <center>
-              <Carousel className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-sm-12">
-                {this.state.hotelDetails.hotel.images.map(image => {
-                  return (
-                    <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src={`http://photos.hotelbeds.com/giata/bigger/${
-                          image.path
-                        }`}
-                        alt=" "
-                      />
-                    </Carousel.Item>
-                  );
-                })}
-              </Carousel>
-            </center>
+                <h5>Location</h5>
+                <p>
+                  {this.state.hotelDetails.hotel.address.content}{" "}
+                  {this.state.hotelDetails.hotel.postalCode}{" "}
+                  {this.state.hotelDetails.hotel.city.content}{" "}
+                  {this.state.hotelDetails.hotel.country.description.content}
+                </p>
+                <ReactMapGL
+                  latitude={this.state.hotelDetails.hotel.coordinates.latitude}
+                  longitude={
+                    this.state.hotelDetails.hotel.coordinates.longitude
+                  }
+                  width={this.state.width}
+                  height={this.state.height}
+                  zoom={this.state.zoom}
+                >
+                  <Marker
+                    latitude={
+                      this.state.hotelDetails.hotel.coordinates.latitude
+                    }
+                    longitude={
+                      this.state.hotelDetails.hotel.coordinates.longitude
+                    }
+                  >
+                    <Icon icon={home} />
+                    <h5>{this.state.hotelDetails.hotel.name.content}</h5>
+                  </Marker>
+                </ReactMapGL>
+              </Col>
+              <Col className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-sm-12">
+                <h5>Photos</h5>
+                <center>
+                  <Carousel className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-sm-12">
+                    {this.state.hotelDetails.hotel.images.map(image => {
+                      return (
+                        <Carousel.Item>
+                          <img
+                            className="d-block w-100"
+                            src={`http://photos.hotelbeds.com/giata/bigger/${
+                              image.path
+                            }`}
+                            alt=" "
+                          />
+                        </Carousel.Item>
+                      );
+                    })}
+                  </Carousel>
+                </center>
+              </Col>
+            </Row>
           </div>
         )}
       </div>

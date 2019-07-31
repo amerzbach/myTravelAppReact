@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { getAll } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import {
@@ -14,10 +14,9 @@ export default class HomeForm extends Component {
     flightFrom: "",
     flightTo: "",
     dateFlightFrom: getToday(1),
-    dateFlightTo: getToday(2),
+    dateFlightTo: getToday(4),
     flightsDataInbound: [],
-    flightsDataOutbound: [],
-    nonStopOnly: true
+    flightsDataOutbound: []
   };
 
   handleChange = event => {
@@ -27,13 +26,6 @@ export default class HomeForm extends Component {
       [name]: value
     });
     console.log(name, value);
-  };
-
-  handleNonStop = event => {
-    this.setState({
-      nonStopOnly: !this.state.nonStopOnly
-    });
-    console.log(this.state.nonStopOnly);
   };
 
   handleDateFlightFromChange = event => {
@@ -78,12 +70,13 @@ export default class HomeForm extends Component {
         getDateApi(dateFlightFrom),
         getDateApi(dateFlightTo)
       ).then(response => {
-        this.props.refreshflightsList(response);
+        console.log(response[3].activities);
+        this.props.refreshHomeList(response[0].ScheduleResource.Schedule,response[1].ScheduleResource.Schedule,response[2].hotels,response[3].activities);
         this.setState({
-          flightsDataInbound: response[0].data,
-          flightsDataOutbound: response[1].data,
-          hotelDetails: response[2].data,
-          activitiesDetails: response[3].data
+          flightsDataInbound: response[0].ScheduleResource.Schedule,
+          flightsDataOutbound: response[1].ScheduleResource.Schedule,
+          hotelDetails: response[2].hotels,
+          activitiesDetails: response[3].activities
         });
       })
     ).catch(err => {
@@ -98,7 +91,7 @@ export default class HomeForm extends Component {
 
         <Form onSubmit={this.handleSubmit} style={{ width: "95%" }}>
           <Form.Row>
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="flightFrom">From</Form.Label>
 
               <Form.Control
@@ -112,7 +105,7 @@ export default class HomeForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="flightTo">To</Form.Label>
 
               <Form.Control
@@ -126,7 +119,7 @@ export default class HomeForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="dateFlightFrom">Date From</Form.Label>
 
               <Form.Control
@@ -140,7 +133,7 @@ export default class HomeForm extends Component {
               />
             </Col>
 
-            <Col>
+            <Col lg="3">
               <Form.Label htmlFor="dateFlightTo">Date To</Form.Label>
 
               <Form.Control
@@ -150,28 +143,15 @@ export default class HomeForm extends Component {
                 name="dateFlightTo"
                 value={getFormDate(this.state.dateFlightTo)}
                 min={getFormDate(getToday(0))}
+                required
               />
             </Col>
           </Form.Row>
-          <Form.Row>
-            <Col align="left">
-              <br />
-              <Alert variant="primary">
-                <Form.Check
-                  inline
-                  label="Non-stop flights only"
-                  type="checkbox"
-                  id="nonStopOnly"
-                  name="nonStopOnly"
-                  onClick={this.handleNonStop}
-                />
-              </Alert>
-            </Col>
-          </Form.Row>
+
           <Form.Row>
             <Col>
               <br />
-              <Button type="submit">Experience Search</Button>
+              <Button type="submit" size="lg">Search</Button>
             </Col>
           </Form.Row>
         </Form>

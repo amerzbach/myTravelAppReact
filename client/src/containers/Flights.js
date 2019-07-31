@@ -3,36 +3,37 @@ import Hero from "../components/hero/hero";
 import FlightsForm from "../components/Flights/FlightsForm";
 import FlightsList from "../components/Flights/FlightsList";
 
-
 export default class Flights extends Component {
   state = {
     flightsDataInbound: [],
-    flightsDataOutbound: [],
-    nonStopOnly: false
+    flightsDataOutbound: []
   };
 
-  refreshflightsList = (flightsDataInbound,flightsDataOutbound,nonStopOnly) => {
+  refreshflightsList = (
+    flightsDataInbound,
+    flightsDataOutbound
+  ) => {
     this.setState({
       flightsDataInbound: flightsDataInbound,
-      flightsDataOutbound: flightsDataOutbound,
-      nonStopOnly: nonStopOnly
+      flightsDataOutbound: flightsDataOutbound
     });
   };
 
   render() {
     return (
       <div>
-        <Hero
-          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-          h1="Flights"
-          h2="Choose your flights. Fly high."
-        />
-        <FlightsForm refreshflightsList={this.refreshflightsList} />
-        <FlightsList
-          inboundFlights={this.state.flightsDataInbound}
-          outboundFlights={this.state.flightsDataOutbound}
-          nonStopOnly={this.state.nonStopOnly}
-        />
+        <center>
+          <Hero
+            videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
+            h1="Flights"
+            h2="First, Business or Economy. Choose your Flights"
+          />
+          <FlightsForm refreshflightsList={this.refreshflightsList} />
+          <FlightsList
+            inboundFlights={this.state.flightsDataInbound}
+            outboundFlights={this.state.flightsDataOutbound}
+          />
+        </center>
       </div>
     );
   }
