@@ -1,238 +1,253 @@
 import React from "react";
-import { Table, Alert } from "react-bootstrap";
+import { Table, Alert, Tabs, Tab } from "react-bootstrap";
 import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const FlightsList = props => {
   return (
     <div
       align="center"
-      style={{ position: "absolute", zIndex: 1, width: "100%" }}
+      style={{ position: "absolute", zIndex: 1, width: "95%", color: "grey" }}
     >
       <br />
+      <Tabs defaultActiveKey="inbound">
+        <br />
 
+        {/*
       {props.inboundFlights.length === 0 && <Alert variant="danger">No inbound flights found</Alert>}
 
       {props.nonStopFlights === true ? <Alert variant="danger">True</Alert> : <Alert variant="danger">False</Alert>}
+    */}
 
-      {props.inboundFlights.length > 0 && (
-        <Table
-          striped
-          bordered
-          hover
-          variant="dark"
-          style={{ width: "95%" }}
-          id="inboundTable"
-        >
-          <thead>
-            <tr>
-              <th colSpan="7" class="bg-primary text-white">
-                Inbound Flights
-              </th>
-            </tr>
-          </thead>
-          <thead>
-            <tr>
-              <th>Duration</th>
-              <th>Airline</th>
-              <th>Flight</th>
-              <th>Dep Airport</th>
-              <th>Arr Airport</th>
-              <th>Dep</th>
-              <th>Arr</th>
-            </tr>
-          </thead>
 
-          <tbody>
-            {props.inboundFlights.map(Flight => {
-              if (Array.isArray(Flight.Flight)) {
-                const stopsNumber = Flight.Flight.length - 1;
-                const duration = getDuration(Flight.TotalJourney.Duration);
-                return Flight.Flight.map((Flight, index) => {
-                  if (index === 0) {
-                    return (
-                      <tr>
-                        <td rowSpan={stopsNumber + 1}>
-                          {duration} <br />
-                          {stopsNumber}
-                          {stopsNumber > 1 ? " Stops" : " Stop"}
-                        </td>
-                        <td>{Flight.MarketingCarrier.AirlineID}</td>
-                        <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                        <td>{Flight.Departure.AirportCode}</td>
-                        <td>{Flight.Arrival.AirportCode}</td>
-                        <td>
-                          {getDateHour(
-                            Flight.Departure.ScheduledTimeLocal.DateTime
-                          )}
-                        </td>
-                        <td>
-                          {getDateHour(
-                            Flight.Arrival.ScheduledTimeLocal.DateTime
-                          )}
-                        </td>
-                      </tr>
-                    );
+        {props.inboundFlights.length > 0 && (
+          
+          <Tab eventKey="inbound" title="Inbound Flights">
+            <Table
+              striped
+              bordered
+              hover
+              variant="dark"
+              style={{ width: "95%" }}
+              id="inboundTable"
+            >
+              <thead>
+              
+                <tr>
+                  <th colSpan="7" class="bg-primary text-white">
+                  
+                    Inbound Flights
+                  </th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Duration</th>
+                  <th>Airline</th>
+                  <th>Flight</th>
+                  <th>Dep Airport</th>
+                  <th>Arr Airport</th>
+                  <th>Dep</th>
+                  <th>Arr</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {props.inboundFlights.map(Flight => {
+                  if (Array.isArray(Flight.Flight)) {
+                    const stopsNumber = Flight.Flight.length - 1;
+                    const duration = getDuration(Flight.TotalJourney.Duration);
+                    return Flight.Flight.map((Flight, index) => {
+                      if (index === 0) {
+                        return (
+                          <tr>
+                            <td rowSpan={stopsNumber + 1}>
+                              {duration} <br />
+                              {stopsNumber}
+                              {stopsNumber > 1 ? " Stops" : " Stop"}
+                            </td>
+                            <td>{Flight.MarketingCarrier.AirlineID}</td>
+                            <td>{Flight.MarketingCarrier.FlightNumber}</td>
+                            <td>{Flight.Departure.AirportCode}</td>
+                            <td>{Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {getDateHour(
+                                Flight.Departure.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                            <td>
+                              {getDateHour(
+                                Flight.Arrival.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      } else {
+                        return (
+                          <tr>
+                            <td>{Flight.MarketingCarrier.AirlineID}</td>
+                            <td>{Flight.MarketingCarrier.FlightNumber}</td>
+                            <td>{Flight.Departure.AirportCode}</td>
+                            <td>{Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {getDateHour(
+                                Flight.Departure.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                            <td>
+                              {getDateHour(
+                                Flight.Arrival.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      }
+                    });
                   } else {
                     return (
                       <tr>
-                        <td>{Flight.MarketingCarrier.AirlineID}</td>
-                        <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                        <td>{Flight.Departure.AirportCode}</td>
-                        <td>{Flight.Arrival.AirportCode}</td>
+                        <td>
+                          {getDuration(Flight.TotalJourney.Duration)}
+                          <br />
+                          Non-stop
+                        </td>
+                        <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
+                        <td>{Flight.Flight.MarketingCarrier.FlightNumber}</td>
+                        <td>{Flight.Flight.Departure.AirportCode}</td>
+                        <td>{Flight.Flight.Arrival.AirportCode}</td>
                         <td>
                           {getDateHour(
-                            Flight.Departure.ScheduledTimeLocal.DateTime
+                            Flight.Flight.Departure.ScheduledTimeLocal.DateTime
                           )}
                         </td>
                         <td>
                           {getDateHour(
-                            Flight.Arrival.ScheduledTimeLocal.DateTime
+                            Flight.Flight.Arrival.ScheduledTimeLocal.DateTime
                           )}
                         </td>
                       </tr>
                     );
                   }
-                });
-              } else {
-                return (
-                  <tr>
-                    <td>
-                      {getDuration(Flight.TotalJourney.Duration)}
-                      <br />
-                      Non-stop
-                    </td>
-                    <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
-                    <td>{Flight.Flight.MarketingCarrier.FlightNumber}</td>
-                    <td>{Flight.Flight.Departure.AirportCode}</td>
-                    <td>{Flight.Flight.Arrival.AirportCode}</td>
-                    <td>
-                      {getDateHour(
-                        Flight.Flight.Departure.ScheduledTimeLocal.DateTime
-                      )}
-                    </td>
-                    <td>
-                      {getDateHour(
-                        Flight.Flight.Arrival.ScheduledTimeLocal.DateTime
-                      )}
-                    </td>
-                  </tr>
-                );
-              }
-            })}
-          </tbody>
-        </Table>
-      )}
+                })}
+              </tbody>
+            </Table>
+          </Tab>
+        )}
 
-      <br />
+        <br />
 
-      {props.outboundFlights.length === 0 && <Alert variant="danger">No outbound flights found</Alert>}
+        {props.outboundFlights.length === 0 && (
+          <Alert variant="danger">No outbound flights found</Alert>
+        )}
 
-      {props.outboundFlights.length > 0 && (
-        <Table
-          striped
-          bordered
-          hover
-          variant="dark"
-          style={{ width: "95%" }}
-          id="outboundTable"
-        >
-          <thead>
-            <tr>
-              <th colSpan="7" class="bg-primary text-white">
-                Outbound Flights
-              </th>
-            </tr>
-            <tr>
-              <th>Duration</th>
-              <th>Airline</th>
-              <th>Flight</th>
-              <th>Dep Airport</th>
-              <th>Arr Airport</th>
-              <th>Dep</th>
-              <th>Arr</th>
-            </tr>
-          </thead>
+        {props.outboundFlights.length > 0 && (
+          <Tab eventKey="outbound" title="Outbound Flights">
+            <Table
+              striped
+              bordered
+              hover
+              variant="dark"
+              style={{ width: "95%" }}
+              id="outboundTable"
+            >
+              <thead>
+                <tr>
+                  <th colSpan="7" class="bg-primary text-white">
+                    Outbound Flights
+                  </th>
+                </tr>
+                <tr>
+                  <th>Duration</th>
+                  <th>Airline</th>
+                  <th>Flight</th>
+                  <th>Dep Airport</th>
+                  <th>Arr Airport</th>
+                  <th>Dep</th>
+                  <th>Arr</th>
+                </tr>
+              </thead>
 
-          <tbody>
-            {props.outboundFlights.map(Flight => {
-              if (Array.isArray(Flight.Flight)) {
-                const stopsNumber = Flight.Flight.length - 1;
-                const duration = getDuration(Flight.TotalJourney.Duration);
-                return Flight.Flight.map((Flight, index) => {
-                  if (index === 0) {
-                    return (
-                      <tr>
-                        <td rowSpan={stopsNumber + 1}>
-                          {duration} <br />
-                          {stopsNumber}
-                          {stopsNumber > 1 ? " Stops" : " Stop"}
-                        </td>
-                        <td>{Flight.MarketingCarrier.AirlineID}</td>
-                        <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                        <td>{Flight.Departure.AirportCode}</td>
-                        <td>{Flight.Arrival.AirportCode}</td>
-                        <td>
-                          {getDateHour(
-                            Flight.Departure.ScheduledTimeLocal.DateTime
-                          )}
-                        </td>
-                        <td>
-                          {getDateHour(
-                            Flight.Arrival.ScheduledTimeLocal.DateTime
-                          )}
-                        </td>
-                      </tr>
-                    );
+              <tbody>
+                {props.outboundFlights.map(Flight => {
+                  if (Array.isArray(Flight.Flight)) {
+                    const stopsNumber = Flight.Flight.length - 1;
+                    const duration = getDuration(Flight.TotalJourney.Duration);
+                    return Flight.Flight.map((Flight, index) => {
+                      if (index === 0) {
+                        return (
+                          <tr>
+                            <td rowSpan={stopsNumber + 1}>
+                              {duration} <br />
+                              {stopsNumber}
+                              {stopsNumber > 1 ? " Stops" : " Stop"}
+                            </td>
+                            <td>{Flight.MarketingCarrier.AirlineID}</td>
+                            <td>{Flight.MarketingCarrier.FlightNumber}</td>
+                            <td>{Flight.Departure.AirportCode}</td>
+                            <td>{Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {getDateHour(
+                                Flight.Departure.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                            <td>
+                              {getDateHour(
+                                Flight.Arrival.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      } else {
+                        return (
+                          <tr>
+                            <td>{Flight.MarketingCarrier.AirlineID}</td>
+                            <td>{Flight.MarketingCarrier.FlightNumber}</td>
+                            <td>{Flight.Departure.AirportCode}</td>
+                            <td>{Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {getDateHour(
+                                Flight.Departure.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                            <td>
+                              {getDateHour(
+                                Flight.Arrival.ScheduledTimeLocal.DateTime
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      }
+                    });
                   } else {
                     return (
                       <tr>
-                        <td>{Flight.MarketingCarrier.AirlineID}</td>
-                        <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                        <td>{Flight.Departure.AirportCode}</td>
-                        <td>{Flight.Arrival.AirportCode}</td>
+                        <td>
+                          {getDuration(Flight.TotalJourney.Duration)}
+                          <br />
+                          Non-stop
+                        </td>
+                        <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
+                        <td>{Flight.Flight.MarketingCarrier.FlightNumber}</td>
+                        <td>{Flight.Flight.Departure.AirportCode}</td>
+                        <td>{Flight.Flight.Arrival.AirportCode}</td>
                         <td>
                           {getDateHour(
-                            Flight.Departure.ScheduledTimeLocal.DateTime
+                            Flight.Flight.Departure.ScheduledTimeLocal.DateTime
                           )}
                         </td>
                         <td>
                           {getDateHour(
-                            Flight.Arrival.ScheduledTimeLocal.DateTime
+                            Flight.Flight.Arrival.ScheduledTimeLocal.DateTime
                           )}
                         </td>
                       </tr>
                     );
                   }
-                });
-              } else {
-                return (
-                  <tr>
-                    <td>
-                      {getDuration(Flight.TotalJourney.Duration)}
-                      <br />
-                      Non-stop
-                    </td>
-                    <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
-                    <td>{Flight.Flight.MarketingCarrier.FlightNumber}</td>
-                    <td>{Flight.Flight.Departure.AirportCode}</td>
-                    <td>{Flight.Flight.Arrival.AirportCode}</td>
-                    <td>
-                      {getDateHour(
-                        Flight.Flight.Departure.ScheduledTimeLocal.DateTime
-                      )}
-                    </td>
-                    <td>
-                      {getDateHour(
-                        Flight.Flight.Arrival.ScheduledTimeLocal.DateTime
-                      )}
-                    </td>
-                  </tr>
-                );
-              }
-            })}
-          </tbody>
-        </Table>
-      )}
+                })}
+              </tbody>
+            </Table>
+          </Tab>
+        )}
+      </Tabs>
     </div>
   );
 };

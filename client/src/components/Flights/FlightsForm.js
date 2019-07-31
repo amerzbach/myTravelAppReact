@@ -16,19 +16,12 @@ export default class FlightsForm extends Component {
     dateFlightTo: getToday(0),
     flightsDataInbound: [],
     flightsDataOutbound: [],
-    nonStopOnly: false
   };
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    });
-  };
-
-  handleNonStop = event => {
-    this.setState({
-      nonStopOnly: !this.state.nonStopOnly
     });
   };
 
@@ -145,21 +138,6 @@ export default class FlightsForm extends Component {
                 value={getFormDate(this.state.dateFlightTo)}
                 min={getFormDate(getToday(0))}
               />
-            </Col>
-          </Form.Row>
-          <Form.Row>
-            <Col align="left">
-              <br />
-              <Alert variant="primary">
-                <Form.Check
-                  inline
-                  label="Non-stop flights only"
-                  type="checkbox"
-                  id="nonStopOnly"
-                  name="nonStopOnly"
-                  onClick={this.handleNonStop}
-                />
-              </Alert>
             </Col>
           </Form.Row>
           <Form.Row>

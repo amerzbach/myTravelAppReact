@@ -30,14 +30,17 @@ const ActivitiesList = props => {
               // console.log (url)
 
               return (
-                <Card style={{ width: "17rem", align: "center" }}>
+                <Card
+                  style={{ width: "17rem", align: "center", margin: "2px" }}
+                >
                   <Link to={`/Activities/${activity.code}`}>
                     <Card.Img
                       variant="top"
                       src={`${
                         activity.content.media.images[0].urls[1].resource
                       }`}
-                      rounded class="card-img-top" />
+                      class="card-img-top"
+                    />
                   </Link>
                   <Card.Body>
                     <Card.Title>

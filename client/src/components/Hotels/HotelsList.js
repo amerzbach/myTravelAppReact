@@ -2,28 +2,31 @@ import React from "react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container, Col, Row, Card, CardDeck, Button } from "react-bootstrap";
+import mapboxgl from "mapbox-gl";
 
 const HotelsList = props => {
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoiYW1lcnpiYWNoIiwiYSI6ImNqeW82Y3g1MTBwM2szaW1veHN3ZzhrMGkifQ.CvCz6JOCwSXuVqptzE96NA";
+
   return (
     <div
       align="center"
       style={{ position: "absolute", zIndex: 1, width: "95%" }}
     >
       <br />
-
       {props.hotelsData.length > 0 && (
-        <Container style={{textAlignment: "center"}}>
+        <Container style={{ textAlignment: "center" }}>
           <Row lg="12">
             {props.hotelsData.map(Hotel => {
               return (
-                <Card style={{ width: "17rem", align: "center" }}>
+                <Card style={{ width: "17rem", align: "center", margin: "2px" }}>
                   <Link to={`/Hotels/${Hotel.code}`}>
                     <Card.Img
                       variant="top"
                       src={`http://photos.hotelbeds.com/giata/bigger/${
                         Hotel.images[0].path
                       }`}
-                     class="card-img-top"
+                      class="card-img-top"
                     />
                   </Link>
                   <Card.Body>
