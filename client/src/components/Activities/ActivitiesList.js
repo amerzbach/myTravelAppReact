@@ -2,11 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   Container,
-  Col,
   Row,
   Card,
-  CardDeck,
-  CardColumns,
   Button
 } from "react-bootstrap";
 
@@ -26,8 +23,6 @@ const ActivitiesList = props => {
         <Container>
           <Row lg="12">
             {props.activitiesData.map(activity => {
-              // const url = {{activity.media.images.urls}}.find(({activity.media.images.urls.sizeType}==="XLARGE"))
-              // console.log (url)
 
               return (
                 <Card
