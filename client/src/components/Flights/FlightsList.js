@@ -25,14 +25,12 @@ const FlightsList = props => {
           <Tabs defaultActiveKey="inbound" className="custom-nav-bg">
             <br />
 
-            {/*
-      {props.inboundFlights.length === 0 && <Alert variant="danger">No inbound flights found</Alert>}
-
-      {props.nonStopFlights === true ? <Alert variant="danger">True</Alert> : <Alert variant="danger">False</Alert>}
-    */}
-
             {props.inboundFlights.length > 0 && (
-              <Tab eventKey="inbound" title="Inbound Flights" className="custom-nav-bg">
+              <Tab
+                eventKey="inbound"
+                title="Inbound Flights"
+                className="custom-nav-bg"
+              >
                 <Table
                   striped
                   bordered

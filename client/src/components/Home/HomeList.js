@@ -1,5 +1,5 @@
 import React from "react";
-import { Card,Table, Alert } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
 const HomeList = props => {

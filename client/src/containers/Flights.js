@@ -6,19 +6,16 @@ import FlightsList from "../components/Flights/FlightsList";
 export default class Flights extends Component {
   state = {
     flightsDataInbound: [],
-    flightsDataOutbound: [],
-    nonStopOnly: false
+    flightsDataOutbound: []
   };
 
   refreshflightsList = (
     flightsDataInbound,
-    flightsDataOutbound,
-    nonStopOnly
+    flightsDataOutbound
   ) => {
     this.setState({
       flightsDataInbound: flightsDataInbound,
-      flightsDataOutbound: flightsDataOutbound,
-      nonStopOnly: nonStopOnly
+      flightsDataOutbound: flightsDataOutbound
     });
   };
 

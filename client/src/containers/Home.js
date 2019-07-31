@@ -11,13 +11,24 @@ export default class Home extends Component {
     activitiesDetails: []
   };
 
+  refreshhomeList = (
+    flightsDataInbound,
+    flightsDataOutbound
+  ) => {
+    this.setState({
+      flightsDataInbound: flightsDataInbound,
+      flightsDataOutbound: flightsDataOutbound
+    });
+  };
+
   render() {
     return (
       <div>
+        <center>
         <Hero
           videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
           h1="myTravelApp"
-          h2="The world is yours.Explore it. Make the Experience."
+          h2="Flights + Hotels + Activities"
         />
 
         <HomeForm refreshHotelsList={this.refreshHotelsList} />
@@ -25,6 +36,7 @@ export default class Home extends Component {
           outboundFlights={this.state.flightsDataOutbound}
           hotelDetails={this.state.hotelDetails} 
           activitiesDetails = {this.state.activitiesDetails} />
+        </center>
       </div>
     );
   }
