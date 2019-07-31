@@ -1,5 +1,13 @@
 import React from "react";
-import { Table, Tabs, Tab, Button, Card, Container,Row } from "react-bootstrap";
+import {
+  Table,
+  Tabs,
+  Tab,
+  Button,
+  Card,
+  Container,
+  Row
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 
@@ -264,7 +272,7 @@ const HomeList = props => {
             {props.hotelDetails.length > 0 && (
               <Tab
                 eventKey="hotelsList"
-                title="Hotel List"
+                title="Hotels"
                 className="custom-nav-bg"
               >
                 <Container style={{ textAlignment: "center" }}>
@@ -316,7 +324,57 @@ const HomeList = props => {
               </Tab>
             )}
 
-            <Tab eventKey="activitiesList" title="Activities" />
+            {props.activitiesDetails.length > 0 && (
+              <Tab
+                eventKey="activitiesList"
+                title="Activities"
+                className="custom-nav-bg"
+              >
+                <Container style={{ align: "center" }}>
+                  <Row className="row justify-content-center">
+                    {props.activitiesDetails.map(activity => {
+                      return (
+                        <Card
+                          style={{ align: "center", margin: "2px" }}
+                          className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
+                        >
+                          <Link to={`/Activities/${activity.code}`}>
+                            <Card.Img
+                              variant="top"
+                              src={`${
+                                activity.content.media.images[0].urls[1]
+                                  .resource
+                              }`}
+                              class="card-img-top"
+                            />
+                          </Link>
+                          <Card.Body>
+                            <Card.Title>
+                              <Link to={`/Activities/${activity.code}`}>
+                                {activity.content.name.toUpperCase()}
+                              </Link>
+                            </Card.Title>
+                            <Card.Text>
+                              <p
+                                class="block-with-text"
+                                dangerouslySetInnerHTML={{
+                                  __html: activity.content.description
+                                }}
+                              />
+                            </Card.Text>
+                          </Card.Body>
+                          <Card.Footer>
+                            <Link to={`/Activities/${activity.code}`}>
+                              <Button variant="primary">More info</Button>
+                            </Link>
+                          </Card.Footer>
+                        </Card>
+                      );
+                    })}
+                  </Row>
+                </Container>
+              </Tab>
+            )}
           </Tabs>
         </div>
       </center>

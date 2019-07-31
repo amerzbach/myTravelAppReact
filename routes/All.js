@@ -105,8 +105,7 @@ router.post("/", (req, res) => {
           // console.log(res[0].data);
           // console.log(res[1].data);
           // console.log(res[2].data);
-          // console.log(res[3].data);
-          // res.json(response);
+          console.log(res[3]);
           const resArray = response.map(element => {
             return element.data;
           });
