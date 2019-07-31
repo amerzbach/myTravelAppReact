@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
 
       const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${dateFlightFrom}?directFlights=false`;
       const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${dateFlightTo}?directFlights=false`;
-      const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${flightTo}&from=1&to=9`;
+      const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${flightTo}&from=1&to=15`;
 
       // HOTELS
 
@@ -80,7 +80,7 @@ router.post("/", (req, res) => {
         to: `${dateFlightTo}`,
         language: "en",
         pagination: {
-          itemsPerPage: 6,
+          itemsPerPage: 15,
           page: 1
         }
       };
@@ -105,7 +105,7 @@ router.post("/", (req, res) => {
           // console.log(res[0].data);
           // console.log(res[1].data);
           // console.log(res[2].data);
-          console.log(res[3]);
+          // console.log(res[3]);
           const resArray = response.map(element => {
             return element.data;
           });
