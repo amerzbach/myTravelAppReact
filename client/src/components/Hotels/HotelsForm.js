@@ -136,7 +136,7 @@ export default class HotelsForm extends Component {
                 <Form.Row>
                   <Col>
                     <br />
-                    <Button type="submit">Hotel Search</Button>
+                    <Button type="submit" size="lg">Hotel Search</Button>
                   </Col>
                 </Form.Row>
               </Form>

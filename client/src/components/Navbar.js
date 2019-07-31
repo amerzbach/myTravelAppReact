@@ -1,13 +1,19 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
-    <Navbar className="nav" variant="dark">
+    <Navbar className="nav fixed-top" variant="dark">
       <Navbar.Brand href="/">myTravelApp</Navbar.Brand>
-      <Navbar.Brand href="/Flights">Flights</Navbar.Brand>
-      <Navbar.Brand href="/Hotels">Hotels</Navbar.Brand>
-      <Navbar.Brand href="/Activities">Activities</Navbar.Brand>
+      <Nav.Link href="/Flights" className="navLink">
+        Flights
+      </Nav.Link>
+      <Nav.Link href="/Hotels" className="navLink">
+        Hotels
+      </Nav.Link>
+      <Nav.Link href="/Activities" className="navLink">
+        Activities
+      </Nav.Link>
     </Navbar>
   );
 };

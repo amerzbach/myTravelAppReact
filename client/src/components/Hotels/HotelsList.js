@@ -10,16 +10,23 @@ const HotelsList = props => {
 
   return (
     <div
-      align="center"
-      style={{ position: "absolute", zIndex: 1, width: "95%" }}
+      style={{
+        position: "absolute",
+        zIndex: 1,
+        width: "100%",
+        align: "center"
+      }}
     >
       <br />
       {props.hotelsData.length > 0 && (
         <Container style={{ textAlignment: "center" }}>
-          <Row lg="12">
+          <Row className="row justify-content-center">
             {props.hotelsData.map(Hotel => {
               return (
-                <Card style={{ width: "17rem", align: "center", margin: "2px" }}>
+                <Card
+                  style={{ align: "center", margin: "2px" }}
+                  className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
+                >
                   <Link to={`/Hotels/${Hotel.code}`}>
                     <Card.Img
                       variant="top"

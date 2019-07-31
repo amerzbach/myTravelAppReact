@@ -14,19 +14,19 @@ const ActivitiesList = props => {
         position: "absolute",
         zIndex: 1,
         width: "100%",
-        textAlign: "center"
+        align: "center"
       }}
     >
       <br />
 
       {props.activitiesData.length > 0 && (
-        <Container>
-          <Row lg="12">
+        <Container style={{align: "center"}}>
+          <Row className="row justify-content-center">
             {props.activitiesData.map(activity => {
-
               return (
                 <Card
-                  style={{ width: "17rem", align: "center", margin: "2px" }}
+                  style={{align: "center", margin: "2px" }}
+                  className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
                 >
                   <Link to={`/Activities/${activity.code}`}>
                     <Card.Img

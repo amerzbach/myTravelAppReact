@@ -32,8 +32,8 @@ export default class HotelDetails extends Component {
         <Hero videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4" />
 
         {Object.entries(this.state.hotelDetails).length > 0 && (
-          <div>
-            <h1>
+          <div style={{ width: "95%",backgroundColor: "white", padding:"10px", textAlign: "left"}}>
+            <h2>
               {this.state.hotelDetails.hotel.name.content}
               <img
                 src={`http://cdn4.hotelopia.com/freya/img/stars/${
@@ -41,7 +41,7 @@ export default class HotelDetails extends Component {
                 }.gif`}
                 alt="Hotel Stars"
               />
-            </h1>
+            </h2>
             <p>{this.state.hotelDetails.hotel.description.content}</p>
 
             <Carousel>
