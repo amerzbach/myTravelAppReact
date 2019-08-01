@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Card, Button, Tabs, Tab } from "react-bootstrap";
-import ReactMapGL, { Marker } from "react-map-gl";
-import { Icon } from "react-icons-kit";
-import { home } from "react-icons-kit/icomoon/home";
+import { Container, Row, Card, Tabs, Tab } from "react-bootstrap";
 
 export default class HotelsList extends Component {
   state = {
-    hotelDetails: [],
-    viewport: {
-      width: 200,
-      height: 200,
-      zoom: 5,
-      latitude: 40,
-      longitude: 20
-    }
+    hotelDetails: []
   };
 
   render() {
@@ -29,29 +19,22 @@ export default class HotelsList extends Component {
       >
         <br />
         <center>
-          <div
-            style={{
-              width: "95%",
-              align: "center",
-              backgroundColor: "white"
-            }}
-          >
-            <Tabs defaultActiveKey="hotelsList" className="custom-nav-bg">
+        <div className="lightDiv95">
+            <Tabs defaultActiveKey="hotelsList">
               <br />
               {this.props.hotelsData.length > 0 && (
                 <Tab
                   eventKey="hotelsList"
-                  title="Hotel List"
+                  title="Hotels"
                   className="custom-nav-bg"
                 >
+                       <div className="lightDiv100">
+                  <br />
                   <Container style={{ textAlignment: "center" }}>
                     <Row className="row justify-content-center">
                       {this.props.hotelsData.map(Hotel => {
                         return (
-                          <Card
-                            style={{ align: "center", margin: "2px" }}
-                            className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
-                          >
+                          <Card className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12 hotelCard border-0">
                             <Link to={`/Hotels/${Hotel.code}`}>
                               <Card.Img
                                 variant="top"
@@ -80,41 +63,12 @@ export default class HotelsList extends Component {
                                 </p>
                               </Card.Text>
                             </Card.Body>
-                            <Card.Footer>
-                              <Link to={`/Hotels/${Hotel.code}`}>
-                                <Button variant="primary">More info</Button>
-                              </Link>
-                            </Card.Footer>
                           </Card>
                         );
                       })}
                     </Row>
                   </Container>
-                </Tab>
-              )}
-              {this.props.hotelsData.length > 0 && (
-                <Tab eventKey="hotelsMap" title="Hotels Map">
-                  <ReactMapGL {...this.state.viewport}>
-                    {this.props.hotelsData.map(Hotel => {
-                      return (
-                        <Marker
-                          latitude={Hotel.coordinates.latitude}
-                          longitude={Hotel.coordinates.longitude}
-                          offsetLeft={-20}
-                          offsetTop={-10}
-                        >
-                          {console.log(
-                            Hotel.coordinates.latitude,
-                            Hotel.coordinates.longitude
-                          )}
-                          <Link to={`/Hotels/${Hotel.code}`}>
-                            <Icon icon={home} />{" "}
-                            {Hotel.name.content.toUpperCase()}
-                          </Link>
-                        </Marker>
-                      );
-                    })}
-                  </ReactMapGL>
+                  </div>
                 </Tab>
               )}
             </Tabs>

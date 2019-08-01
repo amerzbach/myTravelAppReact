@@ -12,7 +12,7 @@ export default class HotelDetails extends Component {
     hotelDetails: [],
     width: 400,
     height: 400,
-    zoom: 13
+    zoom: 12
   };
 
   getHotelData = () => {

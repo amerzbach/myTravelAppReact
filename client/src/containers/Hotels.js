@@ -19,9 +19,9 @@ export default class Hotels extends Component {
       <div>
         <center>
         <Hero
-          videosrc="https://pixabay.com/videos/download/video-24216_medium.mp4"
+          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
           h1="Hotels"
-          h2="Whether luxurious, comfortable or just exciting. Choose your Hotel"
+          h2="Whether luxurious, comfortable or just exciting. You choose"
         />
 
         <HotelsForm refreshHotelsList={this.refreshHotelsList} />

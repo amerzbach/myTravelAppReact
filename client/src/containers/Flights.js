@@ -26,7 +26,7 @@ export default class Flights extends Component {
           <Hero
             videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
             h1="Flights"
-            h2="First, Business or Economy. Choose your Flights"
+            h2="First, Business or Economy. Fly your way"
           />
           <FlightsForm refreshflightsList={this.refreshflightsList} />
           <FlightsList

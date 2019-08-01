@@ -29,17 +29,19 @@ export default class Home extends Component {
     return (
       <div>
         <center>
-        <Hero
-          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-          h1="myTravelApp"
-          h2="Flights + Hotels + Activities"
-        />
+          <Hero
+            videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
+            h1="myTravelApp"
+            h2="Flights + Hotels + Activities"
+          />
 
-        <HomeForm refreshHomeList={this.refreshHomeList} />
-        <HomeList inboundFlights={this.state.flightsDataInbound}
-          outboundFlights={this.state.flightsDataOutbound}
-          hotelDetails={this.state.hotelDetails} 
-          activitiesDetails = {this.state.activitiesDetails} />
+          <HomeForm refreshHomeList={this.refreshHomeList} />
+          <HomeList
+            inboundFlights={this.state.flightsDataInbound}
+            outboundFlights={this.state.flightsDataOutbound}
+            hotelDetails={this.state.hotelDetails}
+            activitiesDetails={this.state.activitiesDetails}
+          />
         </center>
       </div>
     );

@@ -15,12 +15,12 @@ export default class CustomNavbar extends Component {
       this.setState({
         prevScrollpos: currentScrollPos,
         background: "transparentNav"
-      })
+      });
     } else {
       this.setState({
         prevScrollpos: currentScrollPos,
         background: "colorNav"
-      })
+      });
     }
   };
 

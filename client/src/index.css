@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightslategrey;
+  background-color: #292b2c;
 }
 
 code {
@@ -44,6 +44,21 @@ code {
 .nav-transparent {
   background-color: transparent;
 }
+
+.lightDiv95 {
+  background-color: lightgrey;
+  width: 95%;
+}
+
+.lightDiv100 {
+  background-color: white;
+  width: 100%;
+}
+
+.hotelCard { 
+  margin: "10px"
+}
+
 
 .card-img-top {
   width: 100%;
@@ -93,78 +108,4 @@ code {
   margin-top: 0.2em;
   /* bg color = bg color under block */
   background: white;
-}
-
-.panel.with-nav-tabs .panel-heading {
-  padding: 5px 5px 0 5px;
-}
-.panel.with-nav-tabs .nav-tabs {
-  border-bottom: none;
-}
-.panel.with-nav-tabs .nav-justified {
-  margin-bottom: -1px;
-}
-
-.with-nav-tabs.panel-primary .nav-tabs > li > a,
-.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
-.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
-  color: #fff;
-}
-.with-nav-tabs.panel-primary .nav-tabs > .open > a,
-.with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
-.with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
-.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
-.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
-  color: #fff;
-  background-color: #3071a9;
-  border-color: transparent;
-}
-.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
-.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
-.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
-  color: #428bca;
-  background-color: #fff;
-  border-color: #428bca;
-  border-bottom-color: transparent;
-}
-.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
-  background-color: #428bca;
-  border-color: #3071a9;
-}
-.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
-  color: #fff;
-}
-.with-nav-tabs.panel-primary
-  .nav-tabs
-  > li.dropdown
-  .dropdown-menu
-  > li
-  > a:hover,
-.with-nav-tabs.panel-primary
-  .nav-tabs
-  > li.dropdown
-  .dropdown-menu
-  > li
-  > a:focus {
-  background-color: #3071a9;
-}
-.with-nav-tabs.panel-primary
-  .nav-tabs
-  > li.dropdown
-  .dropdown-menu
-  > .active
-  > a,
-.with-nav-tabs.panel-primary
-  .nav-tabs
-  > li.dropdown
-  .dropdown-menu
-  > .active
-  > a:hover,
-.with-nav-tabs.panel-primary
-  .nav-tabs
-  > li.dropdown
-  .dropdown-menu
-  > .active
-  > a:focus {
-  background-color: #4a9fe9;
 }

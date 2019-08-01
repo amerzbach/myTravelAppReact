@@ -23,23 +23,11 @@ const HomeList = props => {
     >
       <br />
       <center>
-        <div
-          style={{
-            width: "95%",
-            align: "center"
-          }}
-        >
-          <Tabs
-            defaultActiveKey="inbound"
-            className="with-nav-tabs.panel-primary nav-tabs"
-          >
+        <div className="lightDiv95">
+          <Tabs defaultActiveKey="inbound">
             <br />
             {props.inboundFlights.length > 0 && (
-              <Tab
-                eventKey="inbound"
-                title="Depart Flights"
-                className="with-nav-tabs.panel-primary nav-tabs panel.with-nav-tabs"
-              >
+              <Tab eventKey="inbound" title="Depart Flights">
                 <Table
                   striped
                   bordered
@@ -158,11 +146,7 @@ const HomeList = props => {
             <br />
 
             {props.outboundFlights.length > 0 && (
-              <Tab
-                eventKey="outbound"
-                title="Return Flights"
-                className="with-nav-tabs.panel-primary nav-tabs"
-              >
+              <Tab eventKey="outbound" title="Return Flights">
                 <Table
                   striped
                   bordered
@@ -283,52 +267,47 @@ const HomeList = props => {
                 title="Hotels"
                 className="custom-nav-bg"
               >
-                <Container className="resultsRow">
-                  <Row className="row justify-content-center">
-                    {props.hotelDetails.map(Hotel => {
-                      return (
-                        <Card
-                          style={{ align: "center", margin: "2px" }}
-                          className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
-                        >
-                          <Link to={`/Hotels/${Hotel.code}`}>
-                            <Card.Img
-                              variant="top"
-                              src={`http://photos.hotelbeds.com/giata/bigger/${
-                                Hotel.images[0].path
-                              }`}
-                              class="card-img-top"
-                            />
-                          </Link>
-                          <Card.Body>
-                            <Card.Title>
-                              <Link to={`/Hotels/${Hotel.code}`}>
-                                {Hotel.name.content.toUpperCase()}
-                              </Link>
-                              <br />
-                              <img
-                                src={`http://cdn4.hotelopia.com/freya/img/stars/${
-                                  Hotel.categoryCode
-                                }.gif`}
-                                alt="Hotel Stars"
-                              />
-                            </Card.Title>
-                            <Card.Text>
-                              <p class="block-with-text">
-                                {Hotel.description.content}
-                              </p>
-                            </Card.Text>
-                          </Card.Body>
-                          <Card.Footer>
+                <div className="lightDiv100">
+                  <br />
+                  <Container className="resultsRow">
+                    <Row className="row justify-content-center">
+                      {props.hotelDetails.map(Hotel => {
+                        return (
+                          <Card className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12 hotelCard border-0">
                             <Link to={`/Hotels/${Hotel.code}`}>
-                              <Button variant="primary">More info</Button>
+                              <Card.Img
+                                variant="top"
+                                src={`http://photos.hotelbeds.com/giata/bigger/${
+                                  Hotel.images[0].path
+                                }`}
+                                class="card-img-top"
+                              />
                             </Link>
-                          </Card.Footer>
-                        </Card>
-                      );
-                    })}
-                  </Row>
-                </Container>
+                            <Card.Body>
+                              <Card.Title>
+                                <Link to={`/Hotels/${Hotel.code}`}>
+                                  {Hotel.name.content.toUpperCase()}
+                                </Link>
+                                <br />
+                                <img
+                                  src={`http://cdn4.hotelopia.com/freya/img/stars/${
+                                    Hotel.categoryCode
+                                  }.gif`}
+                                  alt="Hotel Stars"
+                                />
+                              </Card.Title>
+                              <Card.Text>
+                                <p class="block-with-text">
+                                  {Hotel.description.content}
+                                </p>
+                              </Card.Text>
+                            </Card.Body>
+                          </Card>
+                        );
+                      })}
+                    </Row>
+                  </Container>
+                </div>
               </Tab>
             )}
 
@@ -338,49 +317,44 @@ const HomeList = props => {
                 title="Activities"
                 className="custom-nav-bg"
               >
-                <Container style={{ align: "center" }}>
-                  <Row className="row justify-content-center">
-                    {props.activitiesDetails.map(activity => {
-                      return (
-                        <Card
-                          style={{ align: "center", margin: "2px" }}
-                          className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
-                        >
-                          <Link to={`/Activities/${activity.code}`}>
-                            <Card.Img
-                              variant="top"
-                              src={`${
-                                activity.content.media.images[0].urls[1]
-                                  .resource
-                              }`}
-                              class="card-img-top"
-                            />
-                          </Link>
-                          <Card.Body>
-                            <Card.Title>
-                              <Link to={`/Activities/${activity.code}`}>
-                                {activity.content.name.toUpperCase()}
-                              </Link>
-                            </Card.Title>
-                            <Card.Text>
-                              <p
-                                class="block-with-text"
-                                dangerouslySetInnerHTML={{
-                                  __html: activity.content.description
-                                }}
-                              />
-                            </Card.Text>
-                          </Card.Body>
-                          <Card.Footer>
+                <div className="lightDiv100">
+                  <br />
+                  <Container style={{ align: "center" }}>
+                    <Row className="row justify-content-center">
+                      {props.activitiesDetails.map(activity => {
+                        return (
+                          <Card className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12 hotelCard border-0">
                             <Link to={`/Activities/${activity.code}`}>
-                              <Button variant="primary">More info</Button>
+                              <Card.Img
+                                variant="top"
+                                src={`${
+                                  activity.content.media.images[0].urls[1]
+                                    .resource
+                                }`}
+                                class="card-img-top"
+                              />
                             </Link>
-                          </Card.Footer>
-                        </Card>
-                      );
-                    })}
-                  </Row>
-                </Container>
+                            <Card.Body>
+                              <Card.Title>
+                                <Link to={`/Activities/${activity.code}`}>
+                                  {activity.content.name.toUpperCase()}
+                                </Link>
+                              </Card.Title>
+                              <Card.Text>
+                                <p
+                                  class="block-with-text"
+                                  dangerouslySetInnerHTML={{
+                                    __html: activity.content.description
+                                  }}
+                                />
+                              </Card.Text>
+                            </Card.Body>
+                          </Card>
+                        );
+                      })}
+                    </Row>
+                  </Container>
+                </div>
               </Tab>
             )}
           </Tabs>

@@ -14,20 +14,14 @@ const FlightsList = props => {
     >
       <br />
       <center>
-        <div
-          style={{
-            width: "95%",
-            align: "center"
-          }}
-        >
-          <Tabs defaultActiveKey="inbound" className="with-nav-tabs.panel-primary nav-tabs">
+      <div className="lightDiv95">
+          <Tabs defaultActiveKey="inbound">
             <br />
 
             {props.inboundFlights.length > 0 && (
               <Tab
                 eventKey="inbound"
                 title="Depart Flights"
-                className="with-nav-tabs.panel-primary nav-tabs panel.with-nav-tabs"
               >
                 <Table
                   striped
@@ -147,7 +141,7 @@ const FlightsList = props => {
             <br />
 
             {props.outboundFlights.length > 0 && (
-              <Tab eventKey="outbound" title="Return Flights" className="with-nav-tabs.panel-primary nav-tabs">
+              <Tab eventKey="outbound" title="Return Flights" className="nav-tabs">
                 <Table
                   striped
                   bordered
