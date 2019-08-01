@@ -11,6 +11,7 @@ import {
   Table
 } from "react-bootstrap";
 import { getHotelDetails } from "../../services/Api";
+import { getActivityDetails } from "../../services/Api";
 import { trackPromise } from "react-promise-tracker";
 import ReactMapGL, { Marker } from "react-map-gl";
 import { Icon } from "react-icons-kit";
@@ -20,6 +21,7 @@ import { getDuration, getDateHour } from "../../services/DateTimeFormating";
 export default class HomeList extends Component {
   state = {
     hotelDetails: {},
+    activityDetails: {},
     width: 400,
     height: 400,
     zoom: 12
@@ -33,6 +35,21 @@ export default class HomeList extends Component {
             hotelDetails: response
           });
           this.props.refreshHotelDetails(hotelId);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    );
+  };
+
+  getActivityDetails = activityId => {
+    trackPromise(
+      getActivityDetails(activityId)
+        .then(response => {
+          this.setState({
+            activityDetails: response
+          });
+          this.props.refreshActivityDetails(activityId);
         })
         .catch(err => {
           console.log(err);
@@ -455,7 +472,12 @@ export default class HomeList extends Component {
                         {this.props.activitiesDetails.map(activity => {
                           return (
                             <Card className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12 hotelCard border-0">
-                              <Link to={`/Activities/${activity.code}`}>
+                              <Link
+                                onClick={this.getActivityDetails.bind(
+                                  this,
+                                  activity.code
+                                )}
+                              >
                                 <Card.Img
                                   variant="top"
                                   src={`${
@@ -467,7 +489,12 @@ export default class HomeList extends Component {
                               </Link>
                               <Card.Body>
                                 <Card.Title>
-                                  <Link to={`/Activities/${activity.code}`}>
+                                  <Link
+                                    onClick={this.getActivityDetails.bind(
+                                      this,
+                                      activity.code
+                                    )}
+                                  >
                                     {activity.content.name.toUpperCase()}
                                   </Link>
                                 </Card.Title>
@@ -485,6 +512,24 @@ export default class HomeList extends Component {
                         })}
                       </Row>
                     </Container>
+                  </div>
+                </Tab>
+              )}
+              {Object.getOwnPropertyNames(this.state.activityDetails).length >
+                0 && (
+                <Tab
+                  eventKey="activityDetails"
+                  title={this.state.activityDetails.name}
+                >
+                  <div className="lightDiv100" style={{ padding: "25px" }}>
+                    <h2>{this.state.activityDetails.name}</h2>
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.activityDetails.description
+                      }}
+                      align="left"
+                    />
                   </div>
                 </Tab>
               )}
