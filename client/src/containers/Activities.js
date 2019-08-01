@@ -5,12 +5,19 @@ import ActivitiesList from "../components/Activities/ActivitiesList";
 
 export default class Activities extends Component {
   state = {
-    activitiesData: []
+    activitiesData: [],
+    activityId: 0
   };
 
   refreshActivitiesList = response => {
     this.setState({
       activitiesData: response
+    });
+  };
+
+  refreshActivityDetails = response => {
+    this.setState({
+      activityId: response
     });
   };
 
@@ -20,12 +27,12 @@ export default class Activities extends Component {
         <center>
           <Hero
             videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-            h1="Experience the new"
-            h2="Guide yourself through the most exciting Activities"
+            h1="Activities"
+            h2="Guide yourself through the most exciting experiences"
           />
 
           <ActivitiesForm refreshActivitiesList={this.refreshActivitiesList} />
-          <ActivitiesList activitiesData={this.state.activitiesData} />
+          <ActivitiesList activitiesData={this.state.activitiesData} refreshActivityDetails={this.refreshActivityDetails}/>
         </center>
       </div>
     );

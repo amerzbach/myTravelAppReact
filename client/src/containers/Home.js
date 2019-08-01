@@ -8,7 +8,21 @@ export default class Home extends Component {
     flightsDataInbound: [],
     flightsDataOutbound: [],
     hotelDetails: [],
-    activitiesDetails: []
+    activitiesDetails: [],
+    hotelId: 0,
+    activityId: 0
+  };
+
+  refreshHotelDetails = response => {
+    this.setState({
+      hotelId: response
+    });
+  };
+
+  refreshActivityDetails = response => {
+    this.setState({
+      activityId: response
+    });
   };
 
   refreshHomeList = (
@@ -29,17 +43,21 @@ export default class Home extends Component {
     return (
       <div>
         <center>
-        <Hero
-          videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
-          h1="myTravelApp"
-          h2="Flights + Hotels + Activities"
-        />
+          <Hero
+            videosrc="https://pixabay.com/videos/download/video-10816_medium.mp4"
+            h1="myTravelApp"
+            h2="Flights + Hotels + Activities"
+          />
 
-        <HomeForm refreshHomeList={this.refreshHomeList} />
-        <HomeList inboundFlights={this.state.flightsDataInbound}
-          outboundFlights={this.state.flightsDataOutbound}
-          hotelDetails={this.state.hotelDetails} 
-          activitiesDetails = {this.state.activitiesDetails} />
+          <HomeForm refreshHomeList={this.refreshHomeList} />
+          <HomeList
+            inboundFlights={this.state.flightsDataInbound}
+            outboundFlights={this.state.flightsDataOutbound}
+            hotelDetails={this.state.hotelDetails}
+            activitiesDetails={this.state.activitiesDetails}
+            refreshHotelDetails={this.refreshHotelDetails}
+            refreshActivityDetails={this.refreshActivityDetails}
+          />
         </center>
       </div>
     );

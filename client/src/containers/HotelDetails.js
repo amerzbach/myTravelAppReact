@@ -12,7 +12,7 @@ export default class HotelDetails extends Component {
     hotelDetails: [],
     width: 400,
     height: 400,
-    zoom: 13
+    zoom: 12
   };
 
   getHotelData = () => {
@@ -49,6 +49,7 @@ export default class HotelDetails extends Component {
           >
             <Row>
               <Col className="col-xl-12">
+
                 <h2>
                   {this.state.hotelDetails.hotel.name.content}
                   <img
