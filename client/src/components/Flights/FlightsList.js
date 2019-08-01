@@ -34,16 +34,15 @@ const FlightsList = props => {
                   bordered
                   hover
                   variant="dark"
-                  style={{ width: "100%" }}
                   id="inboundTable"
+                  className="largeTable"
                 >
                   <thead>
                     <tr>
                       <th>Duration</th>
                       <th>Airline</th>
                       <th>Flight</th>
-                      <th>Dep Airport</th>
-                      <th>Arr Airport</th>
+                      <th>Airports</th>
                       <th>Dep</th>
                       <th>Arr</th>
                     </tr>
@@ -67,8 +66,7 @@ const FlightsList = props => {
                                 </td>
                                 <td>{Flight.MarketingCarrier.AirlineID}</td>
                                 <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>{Flight.Departure.AirportCode}-{Flight.Arrival.AirportCode}</td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -86,8 +84,7 @@ const FlightsList = props => {
                               <tr>
                                 <td>{Flight.MarketingCarrier.AirlineID}</td>
                                 <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>{Flight.Departure.AirportCode}-{Flight.Arrival.AirportCode}</td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -106,16 +103,13 @@ const FlightsList = props => {
                         return (
                           <tr>
                             <td>
-                              {getDuration(Flight.TotalJourney.Duration)}
-                              <br />
-                              Non-stop
+                              {getDuration(Flight.TotalJourney.Duration)} Non-stop
                             </td>
                             <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
                             <td>
                               {Flight.Flight.MarketingCarrier.FlightNumber}
                             </td>
-                            <td>{Flight.Flight.Departure.AirportCode}</td>
-                            <td>{Flight.Flight.Arrival.AirportCode}</td>
+                            <td>{Flight.Flight.Departure.AirportCode}-{Flight.Flight.Arrival.AirportCode}</td>
                             <td>
                               {getDateHour(
                                 Flight.Flight.Departure.ScheduledTimeLocal
@@ -146,16 +140,15 @@ const FlightsList = props => {
                   bordered
                   hover
                   variant="dark"
-                  style={{ width: "100%" }}
                   id="outboundTable"
+                  className="largeTable"
                 >
                   <thead>
                     <tr>
                       <th>Duration</th>
                       <th>Airline</th>
                       <th>Flight</th>
-                      <th>Dep Airport</th>
-                      <th>Arr Airport</th>
+                      <th>Airports</th>
                       <th>Dep</th>
                       <th>Arr</th>
                     </tr>
@@ -179,8 +172,7 @@ const FlightsList = props => {
                                 </td>
                                 <td>{Flight.MarketingCarrier.AirlineID}</td>
                                 <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>{Flight.Departure.AirportCode}-{Flight.Arrival.AirportCode}</td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -198,8 +190,7 @@ const FlightsList = props => {
                               <tr>
                                 <td>{Flight.MarketingCarrier.AirlineID}</td>
                                 <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>{Flight.Departure.AirportCode}-{Flight.Arrival.AirportCode}</td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -218,16 +209,13 @@ const FlightsList = props => {
                         return (
                           <tr>
                             <td>
-                              {getDuration(Flight.TotalJourney.Duration)}
-                              <br />
-                              Non-stop
+                              {getDuration(Flight.TotalJourney.Duration)} Non-stop
                             </td>
                             <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
                             <td>
                               {Flight.Flight.MarketingCarrier.FlightNumber}
                             </td>
-                            <td>{Flight.Flight.Departure.AirportCode}</td>
-                            <td>{Flight.Flight.Arrival.AirportCode}</td>
+                            <td>{Flight.Flight.Departure.AirportCode}-{Flight.Flight.Arrival.AirportCode}</td>
                             <td>
                               {getDateHour(
                                 Flight.Flight.Departure.ScheduledTimeLocal

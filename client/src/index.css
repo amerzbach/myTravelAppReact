@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.largeTable {
+  font-size: 0.8rem;
+  width: "100%";
+}
+
 .custom-nav-bg {
   background-color: #dddddd;
 }
@@ -34,8 +39,6 @@ code {
 .nav-transparent {
   background-color: transparent;
 }
-
-
 
 .card-img-top {
   width: 100%;
