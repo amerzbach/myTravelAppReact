@@ -5,12 +5,20 @@ import HotelsList from "../components/Hotels/HotelsList";
 
 export default class Hotels extends Component {
   state = {
-    hotelsData: []
+    hotelsData: [],
+    hotelId: 0
   };
 
   refreshHotelsList = response => {
     this.setState({
-      hotelsData: response.hotelsData
+      hotelsData: response.hotelsData,
+      hotelId: 0
+    });
+  };
+
+  refreshHotelDetails = response => {
+    this.setState({
+      hotelId: response
     });
   };
 
@@ -25,7 +33,7 @@ export default class Hotels extends Component {
         />
 
         <HotelsForm refreshHotelsList={this.refreshHotelsList} />
-        <HotelsList hotelsData={this.state.hotelsData} />
+        <HotelsList hotelsData={this.state.hotelsData} refreshHotelDetails={this.refreshHotelDetails}/>
         </center>
       </div>
     );
