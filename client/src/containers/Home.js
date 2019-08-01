@@ -8,7 +8,14 @@ export default class Home extends Component {
     flightsDataInbound: [],
     flightsDataOutbound: [],
     hotelDetails: [],
-    activitiesDetails: []
+    activitiesDetails: [],
+    hotelId: 0
+  };
+
+  refreshHotelDetails = response => {
+    this.setState({
+      hotelId: response
+    });
   };
 
   refreshHomeList = (
@@ -41,6 +48,7 @@ export default class Home extends Component {
             outboundFlights={this.state.flightsDataOutbound}
             hotelDetails={this.state.hotelDetails}
             activitiesDetails={this.state.activitiesDetails}
+            refreshHotelDetails={this.refreshHotelDetails}
           />
         </center>
       </div>

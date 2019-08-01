@@ -12,7 +12,6 @@ export default class Hotels extends Component {
   refreshHotelsList = response => {
     this.setState({
       hotelsData: response.hotelsData,
-      hotelId: 0
     });
   };
 
