@@ -29,37 +29,31 @@ const HomeList = props => {
             align: "center"
           }}
         >
-          <Tabs defaultActiveKey="inbound" className="custom-nav-bg">
+          <Tabs
+            defaultActiveKey="inbound"
+            className="with-nav-tabs.panel-primary nav-tabs"
+          >
             <br />
 
             {props.inboundFlights.length > 0 && (
               <Tab
                 eventKey="inbound"
-                title="Inbound Flights"
-                className="custom-nav-bg"
+                title="Depart Flights"
+                className="with-nav-tabs.panel-primary nav-tabs panel.with-nav-tabs"
               >
                 <Table
                   striped
                   bordered
                   hover
-                  variant="dark"
-                  style={{ width: "95%" }}
+                  variant="light"
                   id="inboundTable"
+                  className="largeTable"
                 >
                   <thead>
                     <tr>
-                      <th colSpan="7" class="bg-primary text-white">
-                        Inbound Flights
-                      </th>
-                    </tr>
-                  </thead>
-                  <thead>
-                    <tr>
                       <th>Duration</th>
-                      <th>Airline</th>
                       <th>Flight</th>
-                      <th>Dep Airport</th>
-                      <th>Arr Airport</th>
+                      <th>Airports</th>
                       <th>Dep</th>
                       <th>Arr</th>
                     </tr>
@@ -81,10 +75,14 @@ const HomeList = props => {
                                   {stopsNumber}
                                   {stopsNumber > 1 ? " Stops" : " Stop"}
                                 </td>
-                                <td>{Flight.MarketingCarrier.AirlineID}</td>
-                                <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>
+                                  {Flight.MarketingCarrier.AirlineID}{" "}
+                                  {Flight.MarketingCarrier.FlightNumber}
+                                </td>
+                                <td>
+                                  {Flight.Departure.AirportCode}-
+                                  {Flight.Arrival.AirportCode}
+                                </td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -100,10 +98,14 @@ const HomeList = props => {
                           } else {
                             return (
                               <tr>
-                                <td>{Flight.MarketingCarrier.AirlineID}</td>
-                                <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>
+                                  {Flight.MarketingCarrier.AirlineID}{" "}
+                                  {Flight.MarketingCarrier.FlightNumber}
+                                </td>
+                                <td>
+                                  {Flight.Departure.AirportCode}-
+                                  {Flight.Arrival.AirportCode}
+                                </td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -122,16 +124,17 @@ const HomeList = props => {
                         return (
                           <tr>
                             <td>
-                              {getDuration(Flight.TotalJourney.Duration)}
-                              <br />
+                              {getDuration(Flight.TotalJourney.Duration)}{" "}
                               Non-stop
                             </td>
-                            <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
                             <td>
+                              {Flight.Flight.MarketingCarrier.AirlineID}{" "}
                               {Flight.Flight.MarketingCarrier.FlightNumber}
                             </td>
-                            <td>{Flight.Flight.Departure.AirportCode}</td>
-                            <td>{Flight.Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {Flight.Flight.Departure.AirportCode}-
+                              {Flight.Flight.Arrival.AirportCode}
+                            </td>
                             <td>
                               {getDateHour(
                                 Flight.Flight.Departure.ScheduledTimeLocal
@@ -156,27 +159,24 @@ const HomeList = props => {
             <br />
 
             {props.outboundFlights.length > 0 && (
-              <Tab eventKey="outbound" title="Outbound Flights">
+              <Tab
+                eventKey="outbound"
+                title="Return Flights"
+                className="with-nav-tabs.panel-primary nav-tabs"
+              >
                 <Table
                   striped
                   bordered
                   hover
-                  variant="dark"
-                  style={{ width: "95%" }}
+                  variant="light"
                   id="outboundTable"
+                  className="largeTable"
                 >
                   <thead>
                     <tr>
-                      <th colSpan="7" class="bg-primary text-white">
-                        Outbound Flights
-                      </th>
-                    </tr>
-                    <tr>
                       <th>Duration</th>
-                      <th>Airline</th>
                       <th>Flight</th>
-                      <th>Dep Airport</th>
-                      <th>Arr Airport</th>
+                      <th>Airports</th>
                       <th>Dep</th>
                       <th>Arr</th>
                     </tr>
@@ -198,10 +198,14 @@ const HomeList = props => {
                                   {stopsNumber}
                                   {stopsNumber > 1 ? " Stops" : " Stop"}
                                 </td>
-                                <td>{Flight.MarketingCarrier.AirlineID}</td>
-                                <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>
+                                  {Flight.MarketingCarrier.AirlineID}{" "}
+                                  {Flight.MarketingCarrier.FlightNumber}
+                                </td>
+                                <td>
+                                  {Flight.Departure.AirportCode}-
+                                  {Flight.Arrival.AirportCode}
+                                </td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -217,10 +221,14 @@ const HomeList = props => {
                           } else {
                             return (
                               <tr>
-                                <td>{Flight.MarketingCarrier.AirlineID}</td>
-                                <td>{Flight.MarketingCarrier.FlightNumber}</td>
-                                <td>{Flight.Departure.AirportCode}</td>
-                                <td>{Flight.Arrival.AirportCode}</td>
+                                <td>
+                                  {Flight.MarketingCarrier.AirlineID}{" "}
+                                  {Flight.MarketingCarrier.FlightNumber}
+                                </td>
+                                <td>
+                                  {Flight.Departure.AirportCode}-
+                                  {Flight.Arrival.AirportCode}
+                                </td>
                                 <td>
                                   {getDateHour(
                                     Flight.Departure.ScheduledTimeLocal.DateTime
@@ -239,16 +247,17 @@ const HomeList = props => {
                         return (
                           <tr>
                             <td>
-                              {getDuration(Flight.TotalJourney.Duration)}
-                              <br />
+                              {getDuration(Flight.TotalJourney.Duration)}{" "}
                               Non-stop
                             </td>
-                            <td>{Flight.Flight.MarketingCarrier.AirlineID}</td>
                             <td>
+                              {Flight.Flight.MarketingCarrier.AirlineID}{" "}
                               {Flight.Flight.MarketingCarrier.FlightNumber}
                             </td>
-                            <td>{Flight.Flight.Departure.AirportCode}</td>
-                            <td>{Flight.Flight.Arrival.AirportCode}</td>
+                            <td>
+                              {Flight.Flight.Departure.AirportCode}-
+                              {Flight.Flight.Arrival.AirportCode}
+                            </td>
                             <td>
                               {getDateHour(
                                 Flight.Flight.Departure.ScheduledTimeLocal
