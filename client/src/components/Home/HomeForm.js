@@ -120,7 +120,7 @@ export default class HomeForm extends Component {
             </Col>
 
             <Col lg="3">
-              <Form.Label htmlFor="dateFlightFrom">Date From</Form.Label>
+              <Form.Label htmlFor="dateFlightFrom">Depart</Form.Label>
 
               <Form.Control
                 type="date"
@@ -134,7 +134,7 @@ export default class HomeForm extends Component {
             </Col>
 
             <Col lg="3">
-              <Form.Label htmlFor="dateFlightTo">Date To</Form.Label>
+              <Form.Label htmlFor="dateFlightTo">Return</Form.Label>
 
               <Form.Control
                 type="date"

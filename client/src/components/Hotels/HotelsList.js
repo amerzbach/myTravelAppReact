@@ -8,9 +8,13 @@ import { home } from "react-icons-kit/icomoon/home";
 export default class HotelsList extends Component {
   state = {
     hotelDetails: [],
-    width: 800,
-    height: 400,
-    zoom: 12
+    viewport: {
+      width: 200,
+      height: 200,
+      zoom: 5,
+      latitude: 40,
+      longitude: 20
+    }
   };
 
   render() {
@@ -45,7 +49,7 @@ export default class HotelsList extends Component {
                       {this.props.hotelsData.map(Hotel => {
                         return (
                           <Card
-                            style={{ align: "center", margin: "2px"}}
+                            style={{ align: "center", margin: "2px" }}
                             className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-sm-12"
                           >
                             <Link to={`/Hotels/${Hotel.code}`}>
@@ -90,13 +94,7 @@ export default class HotelsList extends Component {
               )}
               {this.props.hotelsData.length > 0 && (
                 <Tab eventKey="hotelsMap" title="Hotels Map">
-                  <ReactMapGL
-                    latitude={this.props.hotelsData[0].coordinates.latitude}
-                    longitude={this.props.hotelsData[0].coordinates.longitude}
-                    width={this.state.width}
-                    height={this.state.height}
-                    zoom={this.state.zoom}
-                  >
+                  <ReactMapGL {...this.state.viewport}>
                     {this.props.hotelsData.map(Hotel => {
                       return (
                         <Marker
@@ -105,8 +103,13 @@ export default class HotelsList extends Component {
                           offsetLeft={-20}
                           offsetTop={-10}
                         >
+                          {console.log(
+                            Hotel.coordinates.latitude,
+                            Hotel.coordinates.longitude
+                          )}
                           <Link to={`/Hotels/${Hotel.code}`}>
-                          <Icon icon={home} /> {Hotel.name.content.toUpperCase()}
+                            <Icon icon={home} />{" "}
+                            {Hotel.name.content.toUpperCase()}
                           </Link>
                         </Marker>
                       );

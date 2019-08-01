@@ -36,10 +36,6 @@ router.post("/", (req, res) => {
         }
       };
 
-      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${dateFlightFrom}?directFlights=false`;
-      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${dateFlightTo}?directFlights=false`;
-      const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${flightTo}&from=1&to=15`;
-
       // HOTELS
 
       const dotenv = require("dotenv");
@@ -67,9 +63,6 @@ router.post("/", (req, res) => {
       activityHash = CryptoJS.SHA256(activityAssemble).toString();
       activityEncryption = activityHash.toString(CryptoJS.enc.Hex);
 
-      const urlApiActivity =
-        "https://api.test.hotelbeds.com/activity-api/3.0/activities/";
-
       const activityParams = {
         filters: [
           {
@@ -92,6 +85,13 @@ router.post("/", (req, res) => {
         "Accept-Encoding": "gzip"
       };
 
+      //Doing 4 API Calls at the same time
+
+      const lhUrl1 = `https://api.lufthansa.com/v1/operations/schedules/${flightFrom}/${flightTo}/${dateFlightFrom}?directFlights=false`;
+      const lhUrl2 = `https://api.lufthansa.com/v1/operations/schedules/${flightTo}/${flightFrom}/${dateFlightTo}?directFlights=false`;
+      const urlApiHotels = `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${flightTo}&from=1&to=15`;
+      const urlApiActivity = "https://api.test.hotelbeds.com/activity-api/3.0/activities/";
+
       const promisesArr = [
         axios.get(lhUrl1, config),
         axios.get(lhUrl2, config),
@@ -101,11 +101,6 @@ router.post("/", (req, res) => {
 
       Promise.all(promisesArr)
         .then(response => {
-          console.log(response);
-          // console.log(res[0].data);
-          // console.log(res[1].data);
-          // console.log(res[2].data);
-          // console.log(res[3]);
           const resArray = response.map(element => {
             return element.data;
           });

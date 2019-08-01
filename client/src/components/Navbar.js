@@ -3,7 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
-    <Navbar className="nav fixed-top" variant="dark">
+    <Navbar className="nav fixed-top navbar-scroll-point" variant="dark">
       <Navbar.Brand href="/">myTravelApp</Navbar.Brand>
       <Nav.Link href="/Flights" className="navLink">
         Flights

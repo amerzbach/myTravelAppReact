@@ -34,7 +34,6 @@ const HomeList = props => {
             className="with-nav-tabs.panel-primary nav-tabs"
           >
             <br />
-
             {props.inboundFlights.length > 0 && (
               <Tab
                 eventKey="inbound"
@@ -284,7 +283,7 @@ const HomeList = props => {
                 title="Hotels"
                 className="custom-nav-bg"
               >
-                <Container style={{ textAlignment: "center" }}>
+                <Container className="resultsRow">
                   <Row className="row justify-content-center">
                     {props.hotelDetails.map(Hotel => {
                       return (
