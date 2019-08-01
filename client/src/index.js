@@ -23,7 +23,7 @@ const LoadingIndicator = props => {
         alignItems: "center"
       }}
     >
-      <Loader type="Plane" color="#ffffff" height="100" width="100" />
+      <Loader type="Plane" color="#428bca" height="100" width="100" />
 </div>
 };
 

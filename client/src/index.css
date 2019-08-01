@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightslategrey;
+
 }
 
 code {
@@ -13,8 +15,12 @@ code {
 }
 
 .largeTable {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   width: "100%";
+}
+
+.resultsRow {
+  background-color: transparent
 }
 
 .navLink {
