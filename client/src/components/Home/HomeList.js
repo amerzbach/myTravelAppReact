@@ -3,7 +3,6 @@ import {
   Table,
   Tabs,
   Tab,
-  Button,
   Card,
   Container,
   Row
@@ -360,6 +359,7 @@ const HomeList = props => {
           </Tabs>
         </div>
       </center>
+      <br /><br />
     </div>
   );
 };

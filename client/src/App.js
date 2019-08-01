@@ -8,7 +8,7 @@ import Hotels from "./containers/Hotels";
 import HotelDetails from "./containers/HotelDetails";
 import Activities from "./containers/Activities";
 import ActivityDetails from "./containers/ActivityDetails";
-import "mapbox-gl/dist/mapbox-gl.css"
+import "mapbox-gl/dist/mapbox-gl.css";
 
 function App() {
   return (

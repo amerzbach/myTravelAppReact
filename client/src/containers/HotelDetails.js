@@ -49,6 +49,7 @@ export default class HotelDetails extends Component {
           >
             <Row>
               <Col className="col-xl-12">
+
                 <h2>
                   {this.state.hotelDetails.hotel.name.content}
                   <img
